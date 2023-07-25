@@ -7,5 +7,4 @@
 <img src="Save the Planet.PNG" width="245" height="164"> <img src="Carbon Footprint.PNG" width="245" height="164"> <img src="News.PNG" width="245" height="164">
 
 ### Settings 
-<img src="Connected Settings.PNG" width="245" height="164"> <img src="Disconnected Settings.PNG" width="245" height="164">
-
+<img src="Connected Settings.PNG" width="245" height="164"> <img src="Disconnected Settings.PNG" width="245" height="164"> <img src="Connection Failed Settings.PNG" width="245" height="164"> 
