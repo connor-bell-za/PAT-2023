@@ -1,0 +1,249 @@
+object fraDataMan: TfraDataMan
+  Size.Width = 928.000000000000000000
+  Size.Height = 1120.000000000000000000
+  Size.PlatformDefault = False
+  object pnlSQL: TPanel
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 31.000000000000000000
+    Position.Y = 21.000000000000000000
+    Size.Width = 857.000000000000000000
+    Size.Height = 532.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object lblHeading: TLabel
+      StyledSettings = [Family, Style, FontColor]
+      Position.X = 23.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 210.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 20.000000000000000000
+      Text = 'SQL Database Query'
+      TabOrder = 1
+    end
+    object lblConStat: TLabel
+      StyledSettings = [Family]
+      Position.X = 666.000000000000000000
+      Position.Y = 20.000000000000000000
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      TextSettings.FontColor = claChartreuse
+      TextSettings.HorzAlign = Trailing
+      Text = 'Connected'
+      TabOrder = 3
+    end
+    object shpConStat: TCircle
+      Fill.Color = claChartreuse
+      Position.X = 794.000000000000000000
+      Position.Y = 22.000000000000000000
+      Size.Width = 15.000000000000000000
+      Size.Height = 15.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = claChartreuse
+    end
+    object mmSQL: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      DataDetectorTypes = []
+      StyledSettings = [Style, FontColor]
+      TextSettings.Font.Family = 'Cascadia Code'
+      TextSettings.Font.Size = 16.000000000000000000
+      Position.X = 23.000000000000000000
+      Position.Y = 45.000000000000000000
+      Size.Width = 786.000000000000000000
+      Size.Height = 108.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      Viewport.Width = 782.000000000000000000
+      Viewport.Height = 104.000000000000000000
+    end
+    object btnExecute: TButton
+      Position.X = 729.000000000000000000
+      Position.Y = 161.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = 'Execute'
+      OnClick = btnExecuteClick
+    end
+    object btnExport: TButton
+      Cursor = crHourGlass
+      Position.X = 729.000000000000000000
+      Position.Y = 476.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'Export'
+      OnClick = btnExportClick
+    end
+    object tblClimates: TStringGrid
+      CanFocus = True
+      ClipChildren = True
+      Position.X = 23.000000000000000000
+      Position.Y = 210.000000000000000000
+      Size.Width = 786.000000000000000000
+      Size.Height = 258.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'gridstyle'
+      TabOrder = 2
+      RowCount = 7
+      Viewport.Width = 782.000000000000000000
+      Viewport.Height = 233.000000000000000000
+    end
+  end
+  object Panel3: TPanel
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 31.000000000000000000
+    Position.Y = 573.000000000000000000
+    Size.Width = 843.000000000000000000
+    Size.Height = 116.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object lblCapture: TLabel
+      StyledSettings = [Family, Style, FontColor]
+      Position.X = 23.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 210.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 20.000000000000000000
+      Text = 'Capture Data'
+      TabOrder = 1
+    end
+    object btnOpen: TButton
+      Position.X = 23.000000000000000000
+      Position.Y = 45.000000000000000000
+      Size.Width = 130.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Open Form'
+      OnClick = btnOpenClick
+    end
+    object Label3: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 224.000000000000000000
+      Position.Y = 36.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      Text = 'For Experts'
+      TabOrder = 4
+    end
+    object Label4: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 224.000000000000000000
+      Position.Y = 57.000000000000000000
+      Size.Width = 417.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      Text = 'New data can also be added via the SQL command line above'
+      TabOrder = 3
+    end
+  end
+  object Panel1: TPanel
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 31.000000000000000000
+    Position.Y = 709.000000000000000000
+    Size.Width = 843.000000000000000000
+    Size.Height = 388.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Label1: TLabel
+      StyledSettings = [Family, Style, FontColor]
+      Position.X = 23.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 210.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 20.000000000000000000
+      Text = 'User Activity Log'
+      TabOrder = 1
+    end
+    object mmLog: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      DataDetectorTypes = []
+      ReadOnly = True
+      StyledSettings = [Style, FontColor]
+      TextSettings.Font.Family = 'Cascadia Code'
+      TextSettings.Font.Size = 16.000000000000000000
+      Position.X = 23.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 786.000000000000000000
+      Size.Height = 276.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Viewport.Width = 782.000000000000000000
+      Viewport.Height = 272.000000000000000000
+    end
+    object btnUpdate: TButton
+      Position.X = 679.000000000000000000
+      Position.Y = 332.000000000000000000
+      Size.Width = 130.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Update Log'
+      OnClick = btnUpdateClick
+    end
+  end
+  object dsClimates: TDataSource
+    DataSet = dmDatabase.tblClimates
+    Left = 248
+    Top = 264
+  end
+  object DBLink: TBindSourceDB
+    DataSet = qryMain
+    ScopeMappings = <
+      item
+      end>
+    Left = 311
+    Top = 278
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 612
+    Top = 165
+    object LinkGridToDataSourceBindSourceDB12: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = DBLink
+      GridControl = tblClimates
+      Columns = <>
+    end
+  end
+  object qryMain: TADOQuery
+    Connection = dmDatabase.conMain
+    CursorType = ctStatic
+    DataSource = dsClimates
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM tblClimates')
+    Left = 520
+    Top = 221
+  end
+  object dsPlaces: TDataSource
+    DataSet = dmDatabase.tblPlaces
+    Left = 488
+    Top = 400
+  end
+  object dsRainfall: TDataSource
+    DataSet = dmDatabase.tblRainfall
+    Left = 352
+    Top = 480
+  end
+  object dsTemperature: TDataSource
+    DataSet = dmDatabase.tblTemperature
+    Left = 544
+    Top = 528
+  end
+  object dsNews: TDataSource
+    DataSet = dmDatabase.tblNews
+    Left = 464
+    Top = 560
+  end
+end

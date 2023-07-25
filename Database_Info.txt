@@ -1,0 +1,15 @@
+DATABASE CONNECTION INFORMATION
+
+Location on Disk:
+C:\Users\Connor Bell\OneDrive - Jeppe High School for Boys\2023 PAT GRADE 12\Program\NEW\Win64\Debug\dbVersion230212.mdb
+
+Connection String:
+Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=C:\Users\Connor Bell\OneDrive - Jeppe High School for Boys\2023 PAT GRADE 12\Program\NEW\Win64\Debug\dbVersion230212.mdb;Mode=ReadWrite;Jet OLEDB:System database="";Jet OLEDB:Registry Path="";Jet OLEDB:Database Password="";Jet OLEDB:Engine Type=5;Jet OLEDB:Database Locking Mode=1;Jet OLEDB:Global Partial Bulk Ops=2;Jet OLEDB:Global Bulk Transactions=1;Jet OLEDB:New Database Password="";Jet OLEDB:Create System Database=False;Jet OLEDB:Encrypt Database=False;Jet OLEDB:Don't Copy Locale on Compact=False;Jet OLEDB:Compact Without Replica Repair=False;Jet OLEDB:SFP=False;
+
+Connection Status	(as of: 2023/04/16 15:52:35)
+Database: CONNECTED
+tblPlaces: ACTIVE
+tblClimates: ACTIVE
+tblEvents: ACTIVE
+tblTemperature: ACTIVE
+tblRainfall: ACTIVE

@@ -1,0 +1,288 @@
+object fraClimate: TfraClimate
+  Size.Width = 928.000000000000000000
+  Size.Height = 578.000000000000000000
+  Size.PlatformDefault = False
+  object ListBox1: TListBox
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 19.000000000000000000
+    Position.Y = 63.000000000000000000
+    Size.Width = 887.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'listboxstyle'
+    TabOrder = 0
+    DisableFocusEffect = True
+    ItemIndex = 0
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    ListStyle = Horizontal
+    Viewport.Width = 883.000000000000000000
+    Viewport.Height = 37.000000000000000000
+    object ListBoxItem1: TListBoxItem
+      TextSettings.Font.Size = 18.000000000000000000
+      StyledSettings = [FontColor, Other]
+      IsSelected = True
+      Size.Width = 245.000000000000000000
+      Size.Height = 37.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = '  Rainfall'
+      OnClick = ListBoxItem1Click
+    end
+    object ListBoxItem2: TListBoxItem
+      TextSettings.Font.Size = 18.000000000000000000
+      StyledSettings = [FontColor, Other]
+      Position.X = 245.000000000000000000
+      Size.Width = 245.000000000000000000
+      Size.Height = 37.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = '  Temperature'
+      OnClick = ListBoxItem2Click
+    end
+  end
+  object Popup1: TPopup
+    Position.X = 232.000000000000000000
+    Position.Y = 400.000000000000000000
+    StyleLookup = 'popupcellstyle'
+    TabOrder = 1
+  end
+  object BitmapListAnimation1: TBitmapListAnimation
+    AnimationCount = 1
+    Enabled = True
+    Duration = 0.200000002980232200
+  end
+  object scrbxTemperature: TScrollBox
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Position.X = 19.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 886.000000000000000000
+    Size.Height = 449.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'scrollboxstyle'
+    TabOrder = 2
+    Viewport.Width = 870.000000000000000000
+    Viewport.Height = 449.000000000000000000
+    inline fraClimateData1: TfraClimateData
+      Align = Top
+      Size.Width = 870.000000000000000000
+      Size.Height = 1333.000000000000000000
+      Size.PlatformDefault = False
+      inherited chtMain: TChart
+        Foot.Font.StyleExt = {00040000000200000004000000}
+        Legend.Title.Font.StyleExt = {00070000000000000004000000}
+        SubFoot.Font.StyleExt = {00040000000200000004000000}
+      end
+      inherited lblHeading: TLabel
+        StyledSettings = [FontColor]
+        Position.Y = -2.000000000000000000
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+      inherited mmClimateDescrip: TMemo
+        StyledSettings = [Style, FontColor]
+        TextSettings.Font.Size = 16.000000000000000000
+        Viewport.Width = 828.000000000000000000
+        Viewport.Height = 139.000000000000000000
+      end
+      inherited Panel1: TPanel
+        inherited lblSeasonRainfall: TLabel
+          StyledSettings = [Style, FontColor]
+          TextSettings.Font.Size = 16.000000000000000000
+        end
+        inherited lblTypeRainfall: TLabel
+          StyledSettings = [Style, FontColor]
+          TextSettings.Font.Size = 16.000000000000000000
+        end
+        inherited lblHeatLevel: TLabel
+          StyledSettings = [Style, FontColor]
+          TextSettings.Font.Size = 16.000000000000000000
+        end
+        inherited lblClimaticGroup: TLabel
+          StyledSettings = [Style, FontColor]
+          TextSettings.Font.Size = 16.000000000000000000
+        end
+      end
+      inherited Label1: TLabel
+        StyledSettings = [FontColor]
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+      inherited strAggs: TStringGrid
+        Viewport.Width = 248.000000000000000000
+        Viewport.Height = 241.000000000000000000
+        inherited StringColumn1: TStringColumn
+          Size.Width = 128.000000000000000000
+        end
+        inherited StringColumn2: TStringColumn
+          Size.Width = 115.000000000000000000
+        end
+      end
+      inherited Label2: TLabel
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+      inherited Label3: TLabel
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+      inherited Label4: TLabel
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+      inherited Memo1: TMemo
+        Viewport.Width = 513.000000000000000000
+        Viewport.Height = 239.000000000000000000
+      end
+      inherited strResults: TStringGrid
+        Viewport.Width = 815.000000000000000000
+        Viewport.Height = 57.000000000000000000
+        inherited StringColumn3: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+        inherited StringColumn4: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+        inherited StringColumn5: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+        inherited StringColumn6: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+        inherited StringColumn7: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+        inherited StringColumn8: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+        inherited StringColumn9: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+        inherited StringColumn10: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+        inherited StringColumn11: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+        inherited StringColumn12: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+        inherited StringColumn13: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+        inherited StringColumn14: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+        inherited StringColumn15: TStringColumn
+          Size.Width = 61.000000000000000000
+        end
+      end
+      inherited lblMisc: TLabel
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+      inherited gbxPrinting: TGroupBox
+        inherited cmbPrint: TComboBox
+          TabOrder = 38
+        end
+        inherited btnPrint: TButton
+          TabOrder = 39
+        end
+      end
+      inherited gbxExport: TGroupBox
+        inherited cmbExport: TComboBox
+          TabOrder = 38
+        end
+        inherited btnExport: TButton
+          TabOrder = 39
+        end
+      end
+      inherited gbxGraph: TGroupBox
+        inherited btnSave: TButton
+          TabOrder = 38
+        end
+        inherited cmbColours: TComboColorBox
+          TabOrder = 39
+        end
+        inherited btnDefault: TButton
+          TabOrder = 40
+        end
+      end
+      inherited lblClimateCode: TLabel
+        StyledSettings = [FontColor]
+        Position.X = 32.000000000000000000
+        TextSettings.Font.StyleExt = {00060000000200000004000000}
+      end
+      inherited lblClimateName: TLabel
+        StyledSettings = [FontColor]
+        Size.Width = 695.000000000000000000
+        TextSettings.Font.StyleExt = {00040000000100000004000000}
+        Text = 'Csa  '
+      end
+      inherited dlgSave: TSaveDialog [20]
+      end
+      inherited dlgPrint: TPrintDialog [21]
+      end
+      inherited dsTemperature: TDataSource [22]
+        Left = 408
+        Top = 480
+      end
+      inherited BindSourceDB1: TBindSourceDB [23]
+      end
+    end
+  end
+  object pnlTop: TPanel
+    Position.X = 19.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 886.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object cmbLocations: TComboBox
+      Items.Strings = (
+        'Johannesburg'
+        'Cape Town'
+        'Durban')
+      ItemIndex = 0
+      Placement = Center
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 233.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'comboboxstyle'
+      TabOrder = 84
+      OnChange = cmbLocationsChange
+    end
+    object lblLocation: TLabel
+      Align = Right
+      StyledSettings = [FontColor]
+      Position.X = 607.000000000000000000
+      Size.Width = 217.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 22.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      TextSettings.HorzAlign = Trailing
+      Text = 'Johannesburg'
+      TabOrder = 85
+    end
+    object btnAboutCity: TSpeedButton
+      Align = MostRight
+      ClipChildren = True
+      Hint = 'About the City'
+      Position.X = 832.000000000000000000
+      Size.Width = 54.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'infotoolbutton'
+      OnClick = btnAboutCityClick
+    end
+    object GridLayout1: TGridLayout
+      Align = Right
+      ItemHeight = 64.000000000000000000
+      ItemWidth = 64.000000000000000000
+      Orientation = Horizontal
+      Position.X = 824.000000000000000000
+      Size.Width = 8.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 87
+    end
+  end
+end
