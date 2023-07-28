@@ -12,7 +12,8 @@
 
 ### Settings 
 <img src="Connected Settings.PNG" width="245" height="164"> <img src="Disconnected Settings.PNG" width="245" height="164"> <img src="Connection Failed Settings.PNG" width="245" height="164"> 
-- Manage the connection to the climate database. 
+- Manage the connection to the climate database.
+- Restart the application.
 
 ### Climate Analysis
 
