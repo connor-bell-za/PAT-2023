@@ -69,7 +69,7 @@ procedure TfraClimate.ListBoxItem2Click(Sender: TObject);
 begin
   // Temperature Click
   fraClimateData1.chtMain.Title.Text.Text := 'Annual Temperature Averages';
-  fraClimateData1.chtMain.LeftAxis.Title.Text := 'Average Temperature (°C)';
+  fraClimateData1.chtMain.LeftAxis.Title.Text := 'Average Temperature (Â°C)';
   fraClimateData1.srsTemp.Visible := True;
   fraClimateData1.srsRainfall.Visible := False;
   fraClimateData1.Temperature;
