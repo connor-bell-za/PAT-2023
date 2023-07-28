@@ -692,12 +692,12 @@ begin
       rqstMain.Execute;
 
       try
-        lblTemp.Text := FloatToStr(Round(StrToFloat(fdmMain['temp']))) + '°';
+        lblTemp.Text := FloatToStr(Round(StrToFloat(fdmMain['temp']))) + 'Â°';
         lblFeelsLike.Text := 'Feels Like: ' +
-          FloatToStr(Round(StrToFloat(fdmMain['feels_like']))) + '°';
+          FloatToStr(Round(StrToFloat(fdmMain['feels_like']))) + 'Â°';
       except
-        lblTemp.Text := '--°';
-        lblFeelsLike.Text := '--°';
+        lblTemp.Text := '--Â°';
+        lblFeelsLike.Text := '--Â°';
       end;
 
       // FORCAST
@@ -720,7 +720,7 @@ begin
           // Temperature
           sWeather := dmMain.fdmForcast['main'];
           arrTemp[I] :=
-            FloatToStr(Round(StrToFloat(Copy(sWeather, 9, 4)))) + '°';
+            FloatToStr(Round(StrToFloat(Copy(sWeather, 9, 4)))) + 'Â°';
 
           // Descriptions
           sDescrip := dmMain.fdmForcast['weather'];
@@ -768,10 +768,10 @@ begin
         lblTime4.Text := '-- pm';
 
         // Temperatures
-        lblTemp1.Text := '--°';
-        lblTemp2.Text := '--°';
-        lblTemp3.Text := '--°';
-        lblTemp4.Text := '--°';
+        lblTemp1.Text := '--Â°';
+        lblTemp2.Text := '--Â°';
+        lblTemp3.Text := '--Â°';
+        lblTemp4.Text := '--Â°';
 
         // Descriptions
         lblDescrip1.Text := '--';
@@ -798,9 +798,9 @@ begin
 
       // Wind Direction
       try
-        lblDirection.Text := 'Direction: ' + dmMain.fdmWind['deg'] + '°';
+        lblDirection.Text := 'Direction: ' + dmMain.fdmWind['deg'] + 'Â°';
       except
-        lblDirection.Text := 'Direction: -- °';
+        lblDirection.Text := 'Direction: -- Â°';
       end;
 
       // Wind Gust
@@ -864,15 +864,15 @@ begin
       dmMain.rqstComps.Execute;
 
       try
-        lblCO.Text := dmMain.fdmComps['co'] + ' µm';
-        lblSO2.Text := dmMain.fdmComps['so2'] + ' µm';
-        lblO3.Text := dmMain.fdmComps['o3'] + ' µm';
-        lblPM2_5.Text := dmMain.fdmComps['pm2_5'] + ' µm';
+        lblCO.Text := dmMain.fdmComps['co'] + ' Âµm';
+        lblSO2.Text := dmMain.fdmComps['so2'] + ' Âµm';
+        lblO3.Text := dmMain.fdmComps['o3'] + ' Âµm';
+        lblPM2_5.Text := dmMain.fdmComps['pm2_5'] + ' Âµm';
       except
-        lblCO.Text := '-- µm';
-        lblSO2.Text := '-- µm';
-        lblO3.Text := '-- µm';
-        lblPM2_5.Text := '-- µm';
+        lblCO.Text := '-- Âµm';
+        lblSO2.Text := '-- Âµm';
+        lblO3.Text := '-- Âµm';
+        lblPM2_5.Text := '-- Âµm';
       end;
 
       // Visibility
