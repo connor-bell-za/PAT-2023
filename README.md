@@ -1,4 +1,16 @@
 # Grade 12 IT Practical Assessment Task 2023
+A practical assessment task (PAT) mark is a compulsory component of the final
+promotion mark for all candidates offering subjects that have a practical component
+and counts 25% (100 marks) of the end-of-the-year examination mark. The PAT is
+implemented across the first three terms of the school year. This is broken down into
+different phases or a series of smaller activities that make up the PAT. The PAT
+allows for learners to be assessed on a regular basis during the school year and it
+also allows for the assessment of skills that cannot be assessed in a written format,
+e.g. test or examination. It is therefore important that schools ensure that all learners
+complete the practical assessment tasks within the stipulated period to ensure that
+learners are resulted at the end of the school year. The planning and execution of the
+PAT differs from subject to subject.
+
 ## Screenshots 
 ### Weather
 <img src="Weather.PNG" width="245" height="164"> <img src="Overcast Clouds.PNG" width="245" height="164"> <img src="Clear Sky.PNG" width="245" height="164">
