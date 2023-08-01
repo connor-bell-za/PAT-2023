@@ -40,4 +40,7 @@ PAT differs from subject to subject.
 - Query the database using SQL (Create, Read, Update and Delete).
 - Export the query results.
 - View activity within the system.
-- Capture data for the database. 
+- Capture data for the database.
+
+### About Screen
+<img src="About Screen.PNG" width="245" height="164">
