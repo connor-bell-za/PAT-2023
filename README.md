@@ -58,3 +58,8 @@ Images showing the various screens of the application, what they do and how they
 - View application version information. 
 ***
 
+## How to use PAT-2023 
+### The Database 
+- The database name is ```PATDB.mdb``` and MUST be stored in the same working folder as the EXE. The EXE should be named ```PAT-2023.exe```. 
+
+***
