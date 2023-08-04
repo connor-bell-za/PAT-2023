@@ -25,15 +25,18 @@ PAT differs from subject to subject.
 ### Settings 
 <img src="Connected Settings.PNG" width="245" height="164"> <img src="Disconnected Settings.PNG" width="245" height="164"> <img src="Connection Failed Settings.PNG" width="245" height="164"> 
 - Manage the connection to the climate database.
+- Change the database location.
+- Manage the OpenAI API Key for the AI climate discussion. 
 - Restart the application.
 
 ### Climate Analysis
 <img src="Climate.PNG" width="245" height="164"> <img src="Climate Graph.PNG" width="245" height="164"> <img src="Discussion.PNG" width="245" height="164">
-- View up-to-date climate data, like annual average temperature and rainfall values.
+- View up-to-date climate data, like annual average temperature and rainfall data for certain South African cities.
 - View temperature and rainfall data in a graph and in a table.
-- View the climate trend for temperature and rainfall.
+- View the graphed climate trend for temperature and rainfall.
 - Export/Print data and graphs.
-- View information about a city.  
+- View information about a city.
+- Read the OpenAI ChatGPT climate trend discussion.   
 
 ### Data Management 
 <img src="Login.PNG" width="245" height="164"> <img src="SQL Query.PNG" width="245" height="164"> <img src="Capture Data.PNG" width="245" height="164"> 
@@ -44,3 +47,5 @@ PAT differs from subject to subject.
 
 ### About Screen
 <img src="About Screen.PNG" width="245" height="164">
+- View application license and developer information. 
+- View application version information. 
