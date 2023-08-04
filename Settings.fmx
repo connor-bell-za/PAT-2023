@@ -1,0 +1,227 @@
+object fraSettings: TfraSettings
+  Size.Width = 928.000000000000000000
+  Size.Height = 836.000000000000000000
+  Size.PlatformDefault = False
+  object Button1: TButton
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 408.000000000000000000
+    Position.Y = -184.000000000000000000
+    Size.Width = 80.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'Apply'
+    TextSettings.Font.Size = 14.000000000000000000
+  end
+  object pnlLocation: TPanel
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 32.000000000000000000
+    Position.Y = 53.000000000000000000
+    Size.Width = 857.000000000000000000
+    Size.Height = 105.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object btnLocationLookup: TButton
+      StyledSettings = [FontColor]
+      Position.X = 782.000000000000000000
+      Position.Y = 45.000000000000000000
+      Size.Width = 43.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = '...'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      OnClick = btnLocationLookupClick
+    end
+    object edtLocation: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 3
+      TextSettings.Font.Size = 16.000000000000000000
+      Position.X = 24.000000000000000000
+      Position.Y = 46.000000000000000000
+      Size.Width = 750.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Style, FontColor]
+      OnChange = edtLocationChange
+    end
+    object lblLocationHeading: TLabel
+      StyledSettings = [FontColor]
+      Position.X = 23.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 210.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 20.000000000000000000
+      Text = 'Location'
+      TabOrder = 1
+    end
+  end
+  object pnlConnectionString: TPanel
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 32.000000000000000000
+    Position.Y = 171.000000000000000000
+    Size.Width = 857.000000000000000000
+    Size.Height = 134.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object lblConnectionStringHeading: TLabel
+      StyledSettings = [FontColor]
+      Hint = 'Automatically Update Weather '
+      Position.X = 23.000000000000000000
+      Position.Y = 14.000000000000000000
+      Size.Width = 370.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 20.000000000000000000
+      Text = 'Connection String'
+      TabOrder = 0
+    end
+    object mmConString: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      DataDetectorTypes = []
+      Lines.Strings = (
+        
+          'Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=C:\Us' +
+          'ers\Connor Bell\OneDrive - Jeppe High School for Boys\2023 PAT G' +
+          'RADE 12\Program\NEW\Win64\Debug\dbVersion230212.mdb;Mode=ReadWri' +
+          'te;Jet OLEDB:System database="";Jet OLEDB:Registry Path="";Jet O' +
+          'LEDB:Database Password="";Jet OLEDB:Engine Type=5;Jet OLEDB:Data' +
+          'base Locking Mode=1;Jet OLEDB:Global Partial Bulk Ops=2;Jet OLED' +
+          'B:Global Bulk Transactions=1;Jet OLEDB:New Database Password="";' +
+          'Jet OLEDB:Create System Database=False;Jet OLEDB:Encrypt Databas' +
+          'e=False;Jet OLEDB:Don'#39't Copy Locale on Compact=False;Jet OLEDB:C' +
+          'ompact Without Replica Repair=False;Jet OLEDB:SFP=False;')
+      StyledSettings = [Size, Style, FontColor]
+      TextSettings.Font.Family = 'Cascadia Code'
+      Position.X = 23.000000000000000000
+      Position.Y = 53.000000000000000000
+      Size.Width = 802.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Viewport.Width = 798.000000000000000000
+      Viewport.Height = 24.000000000000000000
+    end
+  end
+  object dlgLocation: TOpenDialog
+    Left = 776
+    Top = 672
+  end
+  object dlgPrint: TPrintDialog
+    Left = 800
+    Top = 568
+  end
+  object dlgSetup: TPrinterSetupDialog
+    Left = 776
+    Top = 520
+  end
+  object pnlConnectionButtons: TPanel
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 32.000000000000000000
+    Position.Y = 323.000000000000000000
+    Size.Width = 857.000000000000000000
+    Size.Height = 132.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object lblConnectionHeading: TLabel
+      StyledSettings = [FontColor]
+      Hint = 'Automatically Update Weather '
+      Position.X = 23.000000000000000000
+      Position.Y = 13.000000000000000000
+      Size.Width = 370.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 20.000000000000000000
+      Text = 'Connection'
+      TabOrder = 0
+    end
+    object btnConnect: TButton
+      StyledSettings = [FontColor]
+      Position.X = 24.000000000000000000
+      Position.Y = 50.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Connect'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      OnClick = btnConnectClick
+    end
+    object btnDisconnect: TButton
+      StyledSettings = [FontColor]
+      Position.X = 152.000000000000000000
+      Position.Y = 50.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Disconnect'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      OnClick = btnDisconnectClick
+    end
+  end
+  object lblConStat: TLabel
+    StyledSettings = []
+    Position.X = 636.000000000000000000
+    Position.Y = 13.000000000000000000
+    Size.Width = 212.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 22.000000000000000000
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    TextSettings.FontColor = claChartreuse
+    TextSettings.HorzAlign = Trailing
+    Text = 'Connected'
+    TabOrder = 5
+  end
+  object shpConStat: TCircle
+    Fill.Color = claChartreuse
+    Position.X = 860.000000000000000000
+    Position.Y = 18.000000000000000000
+    Size.Width = 20.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = claChartreuse
+  end
+  object Panel1: TPanel
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 32.000000000000000000
+    Position.Y = 470.000000000000000000
+    Size.Width = 857.000000000000000000
+    Size.Height = 134.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Label1: TLabel
+      StyledSettings = [FontColor]
+      Hint = 'Automatically Update Weather '
+      Position.X = 23.000000000000000000
+      Position.Y = 14.000000000000000000
+      Size.Width = 370.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 20.000000000000000000
+      Text = 'OpenAI API Key'
+      TabOrder = 0
+    end
+    object mmKey: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      DataDetectorTypes = []
+      Lines.Strings = (
+        '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')
+      StyledSettings = [Size, Style, FontColor]
+      TextSettings.Font.Family = 'Cascadia Code'
+      Position.X = 23.000000000000000000
+      Position.Y = 53.000000000000000000
+      Size.Width = 802.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Viewport.Width = 798.000000000000000000
+      Viewport.Height = 40.000000000000000000
+    end
+  end
+end

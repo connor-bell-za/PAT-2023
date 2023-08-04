@@ -1,0 +1,1086 @@
+object frmDataCapture: TfrmDataCapture
+  Left = 0
+  Top = 0
+  Caption = 'PAT23'
+  ClientHeight = 595
+  ClientWidth = 980
+  Position = MainFormCenter
+  Quality = HighQuality
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 980.000000000000000000
+    Size.Height = 46.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'toolbarstyle'
+    TabOrder = 0
+    object lblHeading: TLabel
+      Align = Left
+      StyledSettings = [Family, FontColor]
+      Size.Width = 225.000000000000000000
+      Size.Height = 46.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      Text = '    Capture Data'
+      TabOrder = 0
+    end
+    object btnSave: TSpeedButton
+      Align = MostRight
+      StyledSettings = [Family]
+      Position.X = 900.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 46.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'donetoolbutton'
+      Text = 'Save'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      TextSettings.FontColor = claDodgerblue
+      OnClick = btnSaveClick
+    end
+    object btnCancel: TSpeedButton
+      Align = Right
+      StyledSettings = [Family, FontColor]
+      Position.X = 820.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 46.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'deletetoolbutton'
+      Text = 'Cancel'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      OnClick = btnCancelClick
+    end
+  end
+  object tbcMain: TTabControl
+    Align = Client
+    Size.Width = 980.000000000000000000
+    Size.Height = 549.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 0
+    TabOrder = 1
+    TabPosition = PlatformDefault
+    Sizes = (
+      980s
+      517s
+      980s
+      517s
+      980s
+      517s
+      980s
+      517s
+      980s
+      517s)
+    object tblPlaces: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      StyledSettings = [Family, FontColor]
+      IsSelected = True
+      Size.Width = 86.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'tblPlaces'
+      ExplicitSize.cx = 86.000000000000000000
+      ExplicitSize.cy = 32.000000000000000000
+      object Panel3: TPanel
+        Align = Top
+        Size.Width = 980.000000000000000000
+        Size.Height = 449.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object lblCapture: TLabel
+          StyledSettings = [Family, Style, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 27.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 20.000000000000000000
+          Text = 'Add a Place'
+          TabOrder = 1
+        end
+        object Label3: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 45.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00060000000000000004000000}
+          TabOrder = 4
+        end
+        object Label4: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 29.000000000000000000
+          Size.Width = 417.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Add a place to the tblPlaces table of the Database'
+          TabOrder = 2
+        end
+        object cmbProvince: TComboBox
+          Hint = 'Climate'
+          Items.Strings = (
+            'Select Place Name'
+            'Gauteng')
+          ItemIndex = 0
+          ItemHeight = 41.000000000000000000
+          Position.X = 378.000000000000000000
+          Position.Y = 94.000000000000000000
+          Size.Width = 234.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'comboboxstyle'
+          TabOrder = 25
+        end
+        object Label14: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 70.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Place Name'
+          TabOrder = 14
+        end
+        object Label15: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 378.000000000000000000
+          Position.Y = 70.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Province'
+          TabOrder = 11
+        end
+        object cmbClimate: TComboBox
+          Hint = 'Climate'
+          Items.Strings = (
+            'Select Place Name'
+            'Hot Semi-Arid Climate')
+          ItemIndex = 0
+          ItemHeight = 41.000000000000000000
+          Position.X = 664.000000000000000000
+          Position.Y = 95.000000000000000000
+          Size.Width = 219.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'comboboxstyle'
+          TabOrder = 24
+        end
+        object Label16: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 664.000000000000000000
+          Position.Y = 70.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Climate'
+          TabOrder = 10
+        end
+        object nbPopulation: TNumberBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 26
+          Cursor = crIBeam
+          TextSettings.Font.Size = 16.000000000000000000
+          Position.X = 23.000000000000000000
+          Position.Y = 182.000000000000000000
+          Size.Width = 306.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Family, Style, FontColor]
+        end
+        object Label17: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 152.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Population'
+          TabOrder = 13
+        end
+        object dpDateEstablished: TDateEdit
+          Date = 45132.000000000000000000
+          Position.X = 378.000000000000000000
+          Position.Y = 182.000000000000000000
+          Size.Width = 234.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 22
+        end
+        object Label18: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 378.000000000000000000
+          Position.Y = 155.000000000000000000
+          Size.Width = 190.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Date Established'
+          TabOrder = 9
+        end
+        object chkMaritime: TCheckBox
+          StyledSettings = [Family, Style, FontColor]
+          Position.X = 664.000000000000000000
+          Position.Y = 182.000000000000000000
+          Size.Width = 236.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 27
+          Text = 'Maritime Climate'
+          TextSettings.Font.Size = 16.000000000000000000
+        end
+        object mmDescriptionPlace: TMemo
+          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+          DataDetectorTypes = []
+          Position.X = 23.000000000000000000
+          Position.Y = 272.000000000000000000
+          Size.Width = 589.000000000000000000
+          Size.Height = 153.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 23
+          Viewport.Width = 585.000000000000000000
+          Viewport.Height = 149.000000000000000000
+        end
+        object Label19: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 247.000000000000000000
+          Size.Width = 417.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Description'
+          TabOrder = 3
+        end
+        object Label20: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 664.000000000000000000
+          Position.Y = 245.000000000000000000
+          Size.Width = 233.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Image Name (Include Extension)'
+          TabOrder = 6
+        end
+        object edtImageLocationPlace: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 12
+          TextSettings.Font.Size = 16.000000000000000000
+          Position.X = 664.000000000000000000
+          Position.Y = 272.000000000000000000
+          Size.Width = 219.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Enter Image Name'
+          StyledSettings = [Family, Style, FontColor]
+        end
+      end
+      object edtPlaceName: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 14
+        TextSettings.Font.Size = 16.000000000000000000
+        Position.X = 23.000000000000000000
+        Position.Y = 95.000000000000000000
+        Size.Width = 306.000000000000000000
+        Size.Height = 41.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'Enter Place Name'
+        StyledSettings = [Family, Style, FontColor]
+      end
+    end
+    object tblNews: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      StyledSettings = [Family, FontColor]
+      IsSelected = False
+      Size.Width = 81.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'tblNews'
+      ExplicitSize.cx = 81.000000000000000000
+      ExplicitSize.cy = 32.000000000000000000
+      object pnlNews: TPanel
+        Align = Top
+        Size.Width = 980.000000000000000000
+        Size.Height = 505.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object Label1: TLabel
+          StyledSettings = [Family, Style, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 27.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 20.000000000000000000
+          Text = 'Add a News Article'
+          TabOrder = 1
+        end
+        object Label2: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 45.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00060000000000000004000000}
+          TabOrder = 11
+        end
+        object Label5: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 29.000000000000000000
+          Size.Width = 417.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Add a news article to the tblNews table of the Database'
+          TabOrder = 10
+        end
+        object edtSourceName: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 16
+          TextSettings.Font.Size = 16.000000000000000000
+          Position.X = 23.000000000000000000
+          Position.Y = 247.000000000000000000
+          Size.Width = 417.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Enter Source Name'
+          StyledSettings = [Family, Style, FontColor]
+        end
+        object cmbPlace: TComboBox
+          Hint = 'Climate'
+          Items.Strings = (
+            'Select Place Name')
+          ItemIndex = 0
+          ItemHeight = 41.000000000000000000
+          Position.X = 23.000000000000000000
+          Position.Y = 86.000000000000000000
+          Size.Width = 234.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'comboboxstyle'
+          TabOrder = 18
+        end
+        object edtHeadline: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 12
+          TextSettings.Font.Size = 16.000000000000000000
+          Position.X = 23.000000000000000000
+          Position.Y = 162.000000000000000000
+          Size.Width = 906.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Enter Article Headline'
+          StyledSettings = [Family, Style, FontColor]
+        end
+        object Label6: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 59.000000000000000000
+          Size.Width = 417.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Place'
+          TabOrder = 9
+        end
+        object Label7: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 136.000000000000000000
+          Size.Width = 417.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Article Headline'
+          TabOrder = 5
+        end
+        object edtSourceURL: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 15
+          TextSettings.Font.Size = 16.000000000000000000
+          Position.X = 479.000000000000000000
+          Position.Y = 247.000000000000000000
+          Size.Width = 450.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Enter Source URL'
+          StyledSettings = [Family, Style, FontColor]
+        end
+        object Label8: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 221.000000000000000000
+          Size.Width = 417.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Source Name'
+          TabOrder = 4
+        end
+        object Label9: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 479.000000000000000000
+          Position.Y = 221.000000000000000000
+          Size.Width = 417.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Source URL'
+          TabOrder = 2
+        end
+        object dpDatePublished: TDateEdit
+          Date = 45132.000000000000000000
+          Position.X = 299.000000000000000000
+          Position.Y = 86.000000000000000000
+          Size.Width = 141.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 19
+        end
+        object edtAuthorName: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 14
+          TextSettings.Font.Size = 16.000000000000000000
+          Position.X = 479.000000000000000000
+          Position.Y = 86.000000000000000000
+          Size.Width = 190.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Enter Author Name'
+          StyledSettings = [Family, Style, FontColor]
+        end
+        object Label10: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 299.000000000000000000
+          Position.Y = 59.000000000000000000
+          Size.Width = 190.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Date Published'
+          TabOrder = 8
+        end
+        object Label11: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 479.000000000000000000
+          Position.Y = 59.000000000000000000
+          Size.Width = 190.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Author Name'
+          TabOrder = 7
+        end
+        object mmArticle: TMemo
+          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+          DataDetectorTypes = []
+          Position.X = 23.000000000000000000
+          Position.Y = 333.000000000000000000
+          Size.Width = 906.000000000000000000
+          Size.Height = 153.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 20
+          Viewport.Width = 902.000000000000000000
+          Viewport.Height = 149.000000000000000000
+        end
+        object Label12: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 305.000000000000000000
+          Size.Width = 417.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Article Body'
+          TabOrder = 3
+        end
+        object edtImageLocation: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 13
+          TextSettings.Font.Size = 16.000000000000000000
+          Position.X = 710.000000000000000000
+          Position.Y = 86.000000000000000000
+          Size.Width = 219.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Enter Image Name'
+          StyledSettings = [Family, Style, FontColor]
+        end
+        object Label13: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 710.000000000000000000
+          Position.Y = 59.000000000000000000
+          Size.Width = 233.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Image Name (Include Extension)'
+          TabOrder = 6
+        end
+      end
+    end
+    object tblClimates: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      StyledSettings = [Family, FontColor]
+      IsSelected = False
+      Size.Width = 103.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'tblClimates'
+      ExplicitSize.cx = 103.000000000000000000
+      ExplicitSize.cy = 32.000000000000000000
+      object Panel1: TPanel
+        Align = Top
+        Size.Width = 980.000000000000000000
+        Size.Height = 433.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object Label21: TLabel
+          StyledSettings = [Family, Style, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 27.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 20.000000000000000000
+          Text = 'Add a K'#246'ppen Climate'
+          TabOrder = 1
+        end
+        object Label22: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 45.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00060000000000000004000000}
+          TabOrder = 4
+        end
+        object Label23: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 29.000000000000000000
+          Size.Width = 417.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Add a K'#246'ppen Climate to the tblClimates table of the Database'
+          TabOrder = 2
+        end
+        object Label24: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 70.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'K'#246'ppen Climate Name'
+          TabOrder = 18
+        end
+        object Label25: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 378.000000000000000000
+          Position.Y = 70.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'K'#246'ppen Climate Code'
+          TabOrder = 13
+        end
+        object cmbClimateGroup: TComboBox
+          Hint = 'Climate'
+          Items.Strings = (
+            'Select Climate Group')
+          ItemIndex = 0
+          ItemHeight = 41.000000000000000000
+          Position.X = 664.000000000000000000
+          Position.Y = 95.000000000000000000
+          Size.Width = 219.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'comboboxstyle'
+          TabOrder = 30
+        end
+        object Label26: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 664.000000000000000000
+          Position.Y = 70.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Climate Group'
+          TabOrder = 12
+        end
+        object mmLongDescription: TMemo
+          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+          DataDetectorTypes = []
+          Position.X = 23.000000000000000000
+          Position.Y = 279.000000000000000000
+          Size.Width = 589.000000000000000000
+          Size.Height = 122.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 27
+          Viewport.Width = 585.000000000000000000
+          Viewport.Height = 118.000000000000000000
+        end
+        object Label29: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 247.000000000000000000
+          Size.Width = 417.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Long Description'
+          TabOrder = 3
+        end
+        object edtKoppenName: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 16
+          TextSettings.Font.Size = 16.000000000000000000
+          Position.X = 23.000000000000000000
+          Position.Y = 102.000000000000000000
+          Size.Width = 306.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Enter K'#246'ppen Climate Name'
+          StyledSettings = [Family, Style, FontColor]
+        end
+        object edtKoppenCode: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 14
+          TextSettings.Font.Size = 16.000000000000000000
+          Position.X = 378.000000000000000000
+          Position.Y = 95.000000000000000000
+          Size.Width = 234.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Enter K'#246'ppen Climate Code'
+          StyledSettings = [Family, Style, FontColor]
+        end
+        object cmbHeatLevel: TComboBox
+          Hint = 'Climate'
+          Items.Strings = (
+            'Select Heat Level')
+          ItemIndex = 0
+          ItemHeight = 41.000000000000000000
+          Position.X = 664.000000000000000000
+          Position.Y = 358.000000000000000000
+          Size.Width = 219.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'comboboxstyle'
+          TabOrder = 29
+        end
+        object Label27: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 664.000000000000000000
+          Position.Y = 333.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Heat Level'
+          TabOrder = 11
+        end
+        object cmbRainfallType: TComboBox
+          Hint = 'Climate'
+          Items.Strings = (
+            'Select Rainfall Type')
+          ItemIndex = 0
+          ItemHeight = 41.000000000000000000
+          Position.X = 664.000000000000000000
+          Position.Y = 272.000000000000000000
+          Size.Width = 219.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'comboboxstyle'
+          TabOrder = 28
+        end
+        object Label28: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 664.000000000000000000
+          Position.Y = 247.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Rainfall Type'
+          TabOrder = 10
+        end
+        object Label31: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 664.000000000000000000
+          Position.Y = 157.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Rainfall Season'
+          TabOrder = 9
+        end
+        object cmbRainfallSeason: TComboBox
+          Hint = 'Climate'
+          Items.Strings = (
+            'Select Rainfall Season')
+          ItemIndex = 0
+          ItemHeight = 41.000000000000000000
+          Position.X = 664.000000000000000000
+          Position.Y = 182.000000000000000000
+          Size.Width = 219.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'comboboxstyle'
+          TabOrder = 26
+        end
+        object edtShortDescription: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 15
+          TextSettings.Font.Size = 16.000000000000000000
+          Position.X = 23.000000000000000000
+          Position.Y = 182.000000000000000000
+          Size.Width = 589.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Enter Short Description'
+          StyledSettings = [Family, Style, FontColor]
+        end
+        object Label30: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 157.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Short Description'
+          TabOrder = 17
+        end
+      end
+    end
+    object tblTemperature: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      StyledSettings = [Family, FontColor]
+      IsSelected = False
+      Size.Width = 133.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'tblTemperature'
+      ExplicitSize.cx = 133.000000000000000000
+      ExplicitSize.cy = 32.000000000000000000
+      object TPanel
+        Align = Top
+        Size.Width = 980.000000000000000000
+        Size.Height = 441.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object Label32: TLabel
+          StyledSettings = [Family, Style, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 27.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 20.000000000000000000
+          Text = 'Add Temperature Data'
+          TabOrder = 1
+        end
+        object Label33: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 45.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00060000000000000004000000}
+          TabOrder = 3
+        end
+        object Label34: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 29.000000000000000000
+          Size.Width = 602.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 
+            'Add annual temperature averages into the tblTemperature table of' +
+            ' the Database'
+          TabOrder = 2
+        end
+        object cmbPlaceTemp: TComboBox
+          Hint = 'Climate'
+          Items.Strings = (
+            'Select Climate Group')
+          ItemIndex = 0
+          ItemHeight = 41.000000000000000000
+          Position.X = 23.000000000000000000
+          Position.Y = 102.000000000000000000
+          Size.Width = 219.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'comboboxstyle'
+          TabOrder = 19
+        end
+        object Label37: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 75.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Place'
+          TabOrder = 11
+        end
+        object Label35: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 287.000000000000000000
+          Position.Y = 75.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Annual Data'
+          TabOrder = 10
+        end
+        object nbTempAvg: TNumberBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 20
+          Cursor = crIBeam
+          ValueType = Float
+          KeyboardType = NumbersAndPunctuation
+          TextSettings.Font.Size = 16.000000000000000000
+          Position.X = 427.000000000000000000
+          Position.Y = 367.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Family, Style, FontColor]
+        end
+        object Label38: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 427.000000000000000000
+          Position.Y = 341.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Average'
+          TabOrder = 9
+        end
+        object Label39: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 535.000000000000000000
+          Position.Y = 373.000000000000000000
+          Size.Width = 26.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 16.000000000000000000
+          Text = #186'C'
+          TabOrder = 8
+        end
+        object btnAddTemp: TButton
+          StyledSettings = [Family, FontColor]
+          Position.X = 602.000000000000000000
+          Position.Y = 367.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 21
+          Text = 'Add'
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Font.StyleExt = {00060000000000000004000000}
+          OnClick = btnAddTempClick
+        end
+        object GroupBox1: TGroupBox
+          Position.X = 23.000000000000000000
+          Position.Y = 151.000000000000000000
+          Size.Width = 219.000000000000000000
+          Size.Height = 258.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Records'
+          TabOrder = 22
+          object nbTempHigh: TNumberBox
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            TabOrder = 28
+            Cursor = crIBeam
+            ValueType = Float
+            KeyboardType = NumbersAndPunctuation
+            TextSettings.Font.Size = 16.000000000000000000
+            Position.X = 20.000000000000000000
+            Position.Y = 41.000000000000000000
+            Size.Width = 100.000000000000000000
+            Size.Height = 41.000000000000000000
+            Size.PlatformDefault = False
+            StyledSettings = [Family, Style, FontColor]
+          end
+          object Label40: TLabel
+            StyledSettings = [Family, FontColor]
+            Position.X = 20.000000000000000000
+            Position.Y = 15.000000000000000000
+            Size.Width = 210.000000000000000000
+            Size.Height = 24.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 14.000000000000000000
+            Text = 'Record High'
+            TabOrder = 11
+          end
+          object Label41: TLabel
+            StyledSettings = [Family, FontColor]
+            Position.X = 128.000000000000000000
+            Position.Y = 50.000000000000000000
+            Size.Width = 56.000000000000000000
+            Size.Height = 24.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 16.000000000000000000
+            Text = #186'C    in'
+            TabOrder = 10
+          end
+          object nbTempLow: TNumberBox
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            TabOrder = 27
+            Cursor = crIBeam
+            ValueType = Float
+            KeyboardType = NumbersAndPunctuation
+            TextSettings.Font.Size = 16.000000000000000000
+            Position.X = 20.000000000000000000
+            Position.Y = 158.000000000000000000
+            Size.Width = 100.000000000000000000
+            Size.Height = 41.000000000000000000
+            Size.PlatformDefault = False
+            StyledSettings = [Family, Style, FontColor]
+          end
+          object Label42: TLabel
+            StyledSettings = [Family, FontColor]
+            Position.X = 128.000000000000000000
+            Position.Y = 160.000000000000000000
+            Size.Width = 56.000000000000000000
+            Size.Height = 24.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 16.000000000000000000
+            Text = #186'C    in'
+            TabOrder = 8
+          end
+          object Label43: TLabel
+            StyledSettings = [Family, FontColor]
+            Position.X = 20.000000000000000000
+            Position.Y = 132.000000000000000000
+            Size.Width = 210.000000000000000000
+            Size.Height = 24.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 14.000000000000000000
+            Text = 'Record Low'
+            TabOrder = 9
+          end
+          object dpTempHigh: TDateEdit
+            Date = 45132.000000000000000000
+            Position.X = 20.000000000000000000
+            Position.Y = 90.000000000000000000
+            Size.Width = 164.000000000000000000
+            Size.Height = 41.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 20
+          end
+          object dpTempLow: TDateEdit
+            Date = 45132.000000000000000000
+            Position.X = 20.000000000000000000
+            Position.Y = 207.000000000000000000
+            Size.Width = 164.000000000000000000
+            Size.Height = 41.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 19
+          end
+        end
+      end
+    end
+    object tblRainfall: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      StyledSettings = [Family, FontColor]
+      IsSelected = False
+      Size.Width = 95.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'tblRainfall'
+      ExplicitSize.cx = 95.000000000000000000
+      ExplicitSize.cy = 32.000000000000000000
+    end
+  end
+  object pnlBacking1: TRectangle
+    Align = Client
+    Fill.Color = xFF656565
+    Opacity = 0.699999988079071000
+    Size.Width = 928.000000000000000000
+    Size.Height = 578.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+  end
+  object dsTemperature: TDataSource
+    DataSet = dmDatabase.tblTemperature
+    Left = 544
+    Top = 528
+  end
+  object qryMain: TADOQuery
+    Connection = dmDatabase.conMain
+    DataSource = dsTemperature
+    Parameters = <>
+    Left = 439
+    Top = 139
+  end
+end

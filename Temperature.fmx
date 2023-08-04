@@ -1,0 +1,615 @@
+object fraClimateData: TfraClimateData
+  Align = Top
+  Size.Width = 886.000000000000000000
+  Size.Height = 1389.000000000000000000
+  Size.PlatformDefault = False
+  object chtMain: TChart
+    Position.X = 17.000000000000000000
+    Position.Y = 353.000000000000000000
+    Foot.Font.StyleExt = {00040000000200000004000000}
+    Legend.Alignment = laBottom
+    Legend.Frame.Visible = False
+    Legend.Title.Font.StyleExt = {00070000000000000004000000}
+    Legend.Visible = False
+    SubFoot.Font.StyleExt = {00040000000200000004000000}
+    SubTitle.AutoSize = False
+    SubTitle.Font.Size = 15.313253402709960000
+    SubTitle.Font.Color = claWhite
+    SubTitle.Font.Brush.Color = claWhite
+    SubTitle.Text.Strings = (
+      'Johannesburg (2010 - 2022)')
+    SubTitle.AdjustFrame = False
+    SubTitle.VertMargin = 1
+    Title.Font.Family = 'Segoe UI Semibold'
+    Title.Font.Size = 16.506023406982420000
+    Title.Font.Color = claWhite
+    Title.Font.Brush.Color = claWhite
+    Title.Text.Strings = (
+      'Annual Rainfall Averages')
+    BottomAxis.Automatic = False
+    BottomAxis.AutomaticMaximum = False
+    BottomAxis.AutomaticMinimum = False
+    BottomAxis.Axis.Color = claWhite
+    BottomAxis.Axis.Width = 0.162790775299072300
+    BottomAxis.Axis.Fill.Color = claWhite
+    BottomAxis.Axis.JoinStyle = jsMitter
+    BottomAxis.AxisValuesFormat = '###0.###'
+    BottomAxis.Grid.Color = claWhite
+    BottomAxis.Grid.Style = psDot
+    BottomAxis.Grid.Width = 0.162790775299072300
+    BottomAxis.Grid.EndStyle = esFlat
+    BottomAxis.Grid.Fill.Color = claWhite
+    BottomAxis.Grid.JoinStyle = jsMitter
+    BottomAxis.Grid.SmallDots = True
+    BottomAxis.Increment = 1.000000000000000000
+    BottomAxis.LabelsFormat.Font.Color = claWhite
+    BottomAxis.LabelsFormat.Font.Brush.Color = claWhite
+    BottomAxis.LabelsFormat.Margins.Units = maPixels
+    BottomAxis.LabelsSeparation = 0
+    BottomAxis.Maximum = 2022.000000000000000000
+    BottomAxis.Minimum = 2010.000000000000000000
+    BottomAxis.Ticks.Color = claLightgray
+    BottomAxis.Ticks.Width = 0.116279602050781300
+    BottomAxis.Ticks.Fill.Color = claLightgray
+    BottomAxis.Title.Caption = 'Year'
+    BottomAxis.Title.Font.Size = 14.120481491088870000
+    BottomAxis.Title.Font.Color = claWhite
+    BottomAxis.Title.Font.Brush.Color = claWhite
+    ClipPoints = False
+    LeftAxis.Axis.Color = claLightgray
+    LeftAxis.Axis.Width = 0.162790775299072300
+    LeftAxis.Axis.Fill.Color = claLightgray
+    LeftAxis.Grid.Color = claWhite
+    LeftAxis.Grid.Width = 0.162790775299072300
+    LeftAxis.Grid.Fill.Color = claWhite
+    LeftAxis.LabelsFormat.Font.Color = claWhite
+    LeftAxis.LabelsFormat.Font.Brush.Color = claWhite
+    LeftAxis.LabelsFormat.Margins.Left = 26
+    LeftAxis.Ticks.Width = 0.139534950256347700
+    LeftAxis.Title.Caption = 'Average Rainfall (mm)'
+    LeftAxis.Title.Font.Size = 14.120481491088870000
+    LeftAxis.Title.Font.Color = claWhite
+    LeftAxis.Title.Font.Brush.Color = claWhite
+    Panning.MouseWheel = pmwNone
+    RightAxis.LabelsFormat.Font.Color = claWhite
+    RightAxis.LabelsFormat.Font.Brush.Color = claWhite
+    RightAxis.Title.Font.Color = claWhite
+    RightAxis.Title.Font.Brush.Color = claWhite
+    Shadow.Visible = False
+    View3D = False
+    View3DWalls = False
+    Zoom.Brush.Kind = None
+    Zoom.Pen.Fill.Color = claSilver
+    ZoomWheel = pmwNormal
+    BevelOuter = bvNone
+    Color = claNull
+    TabOrder = 0
+    Cursor = crAppStart
+    Size.Width = 832.000000000000000000
+    Size.Height = 377.000000000000000000
+    Size.PlatformDefault = False
+    ColorPaletteIndex = 13
+    object srsTemp: TLineSeries
+      HoverElement = [heCurrent]
+      ColorEachLine = False
+      Gradient.EndColor = claRed
+      Gradient.StartColor = claYellow
+      Gradient.Visible = True
+      SeriesColor = xFF3571DC
+      Shadow.Visible = False
+      Stacked = cssOverlap
+      ValueFormat = '###0.###'
+      Brush.Kind = Gradient
+      Brush.Gradient.EndColor = claRed
+      Brush.Gradient.StartColor = claYellow
+      Brush.Gradient.Visible = True
+      Brush.BackColor = x00FFFFFF
+      Dark3D = False
+      DrawStyle = dsAll
+      LineBrush = Gradient
+      LinePen.Width = 3.488372087478638000
+      LinePen.EndStyle = esFlat
+      LinePen.JoinStyle = jsMitter
+      Pointer.Dark3D = False
+      Pointer.Draw3D = False
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+    end
+    object srsRainfall: TLineSeries
+      HoverElement = [heCurrent]
+      ColorEachLine = False
+      Gradient.EndColor = claRed
+      Gradient.StartColor = claYellow
+      Gradient.Visible = True
+      SeriesColor = xFF53E888
+      Shadow.Visible = False
+      Stacked = cssOverlap
+      ValueFormat = '###0.###'
+      Brush.Kind = Gradient
+      Brush.Gradient.EndColor = claRed
+      Brush.Gradient.StartColor = claYellow
+      Brush.Gradient.Visible = True
+      Brush.BackColor = x00FFFFFF
+      Dark3D = False
+      DrawStyle = dsAll
+      LineBrush = Gradient
+      LinePen.Width = 3.488372087478638000
+      LinePen.EndStyle = esFlat
+      LinePen.JoinStyle = jsMitter
+      Pointer.Dark3D = False
+      Pointer.Draw3D = False
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+    end
+    object srsTempTrend: TLineSeries
+      HoverElement = [heCurrent]
+      ColorEachLine = False
+      Gradient.EndColor = claRed
+      Gradient.StartColor = claYellow
+      Gradient.Visible = True
+      SeriesColor = xFFD6D6D6
+      Shadow.Visible = False
+      Stacked = cssOverlap
+      ValueFormat = '###0.###'
+      Brush.Kind = Gradient
+      Brush.Gradient.EndColor = claRed
+      Brush.Gradient.StartColor = claYellow
+      Brush.Gradient.Visible = True
+      Brush.BackColor = x00FFFFFF
+      Dark3D = False
+      DrawStyle = dsAll
+      LineBrush = Gradient
+      LinePen.Style = psDash
+      LinePen.Width = 2.325581312179565000
+      LinePen.EndStyle = esFlat
+      LinePen.JoinStyle = jsMitter
+      Pointer.Dark3D = False
+      Pointer.Draw3D = False
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+      Transparency = 10
+    end
+  end
+  object lblHeading: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 17.000000000000000000
+    Position.Y = -1.000000000000000000
+    Size.Width = 337.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    Text = 'Climate'
+    TabOrder = 6
+  end
+  object mmClimateDescrip: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    ReadOnly = True
+    ShowScrollBars = False
+    TextSettings.WordWrap = True
+    Margins.Left = 10.000000000000000000
+    Position.X = 17.000000000000000000
+    Position.Y = 181.000000000000000000
+    Size.Width = 832.000000000000000000
+    Size.Height = 143.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'memostyle'
+    TabOrder = 10
+    Viewport.Width = 828.000000000000000000
+    Viewport.Height = 139.000000000000000000
+  end
+  object Panel1: TPanel
+    Position.X = 17.000000000000000000
+    Position.Y = 99.000000000000000000
+    Size.Width = 832.000000000000000000
+    Size.Height = 71.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 11
+    object lblSeasonRainfall: TLabel
+      StyledSettings = [Family, Style, FontColor]
+      Position.X = 17.000000000000000000
+      Position.Y = 13.000000000000000000
+      Size.Width = 248.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      Text = 'Rainfall Season: '
+      TabOrder = 7
+    end
+    object lblTypeRainfall: TLabel
+      StyledSettings = [Family, Style, FontColor]
+      Position.X = 17.000000000000000000
+      Position.Y = 40.000000000000000000
+      Size.Width = 248.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      Text = 'Rainfall Type: '
+      TabOrder = 8
+    end
+    object lblHeatLevel: TLabel
+      StyledSettings = [Family, Style, FontColor]
+      Position.X = 284.000000000000000000
+      Position.Y = 13.000000000000000000
+      Size.Width = 317.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      Text = 'Heat Level: '
+      TabOrder = 6
+    end
+    object lblClimaticGroup: TLabel
+      StyledSettings = [Family, Style, FontColor]
+      Position.X = 284.000000000000000000
+      Position.Y = 35.000000000000000000
+      Size.Width = 389.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      Text = 'Climatic Group:'
+      TabOrder = 5
+    end
+  end
+  object Label1: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 17.000000000000000000
+    Position.Y = 328.000000000000000000
+    Size.Width = 337.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    Text = 'Data Graph'
+    TabOrder = 5
+  end
+  object strAggs: TStringGrid
+    CanFocus = True
+    ClipChildren = True
+    Position.X = 36.000000000000000000
+    Position.Y = 892.000000000000000000
+    Size.Width = 248.000000000000000000
+    Size.Height = 241.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 12
+    RowCount = 6
+    Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, Header, HeaderClick, AutoDisplacement]
+    Viewport.Width = 244.000000000000000000
+    Viewport.Height = 216.000000000000000000
+    object StringColumn1: TStringColumn
+      Header = 'Aggregate'
+      ReadOnly = True
+      Size.Width = 128.000000000000000000
+    end
+    object StringColumn2: TStringColumn
+      Header = 'Value'
+      ReadOnly = True
+      Size.Width = 115.000000000000000000
+    end
+  end
+  object Label2: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 34.000000000000000000
+    Position.Y = 721.000000000000000000
+    Size.Width = 337.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    Text = 'Data Figures'
+    TabOrder = 4
+  end
+  object Label3: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 34.000000000000000000
+    Position.Y = 835.000000000000000000
+    Size.Width = 337.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    Text = 'Aggregate Figures'
+    TabOrder = 3
+  end
+  object Label4: TLabel
+    StyledSettings = [Family]
+    Position.X = 336.000000000000000000
+    Position.Y = 835.000000000000000000
+    Size.Width = 337.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    TextSettings.FontColor = claWhite
+    Text = 'AI Discussion'
+    TabOrder = 1
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    ShowScrollBars = False
+    TextSettings.WordWrap = True
+    Margins.Left = 10.000000000000000000
+    Position.X = 336.000000000000000000
+    Position.Y = 892.000000000000000000
+    Size.Width = 513.000000000000000000
+    Size.Height = 239.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'memostyle'
+    TabOrder = 9
+    Viewport.Width = 509.000000000000000000
+    Viewport.Height = 235.000000000000000000
+  end
+  object strResults: TStringGrid
+    CanFocus = True
+    ClipChildren = True
+    Position.X = 34.000000000000000000
+    Position.Y = 776.000000000000000000
+    Size.Width = 815.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+    RowCount = 1
+    Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, Header, HeaderClick, AutoDisplacement]
+    Viewport.Width = 811.000000000000000000
+    Viewport.Height = 32.000000000000000000
+    object StringColumn3: TStringColumn
+      Header = '2010'
+      Size.Width = 61.000000000000000000
+    end
+    object StringColumn4: TStringColumn
+      Header = '2011'
+      Size.Width = 61.000000000000000000
+    end
+    object StringColumn5: TStringColumn
+      Header = '2012'
+      Size.Width = 61.000000000000000000
+    end
+    object StringColumn6: TStringColumn
+      Header = '2013'
+      Size.Width = 61.000000000000000000
+    end
+    object StringColumn7: TStringColumn
+      Header = '2014'
+      Size.Width = 61.000000000000000000
+    end
+    object StringColumn8: TStringColumn
+      Header = '2015'
+      Size.Width = 61.000000000000000000
+    end
+    object StringColumn9: TStringColumn
+      Header = '2016'
+      Size.Width = 61.000000000000000000
+    end
+    object StringColumn10: TStringColumn
+      Header = '2017'
+      Size.Width = 61.000000000000000000
+    end
+    object StringColumn11: TStringColumn
+      Header = '2018'
+      Size.Width = 61.000000000000000000
+    end
+    object StringColumn12: TStringColumn
+      Header = '2019'
+      Size.Width = 61.000000000000000000
+    end
+    object StringColumn13: TStringColumn
+      Header = '2020'
+      Size.Width = 61.000000000000000000
+    end
+    object StringColumn14: TStringColumn
+      Header = '2021'
+      Size.Width = 61.000000000000000000
+    end
+    object StringColumn15: TStringColumn
+      Header = '2022'
+      Size.Width = 61.000000000000000000
+    end
+  end
+  object lblDataUnit: TLabel
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 160.000000000000000000
+    Position.Y = 738.000000000000000000
+    TextSettings.Font.Size = 18.000000000000000000
+    Text = #176'C'
+    TabOrder = 15
+  end
+  object lblMisc: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 38.000000000000000000
+    Position.Y = 1133.000000000000000000
+    Size.Width = 337.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    Text = 'Rainfall - Misc.'
+    TabOrder = 2
+  end
+  object gbxPrinting: TGroupBox
+    StyledSettings = [Family, Style, FontColor, Other]
+    Position.X = 38.000000000000000000
+    Position.Y = 1180.000000000000000000
+    Size.Width = 267.000000000000000000
+    Size.Height = 131.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Print'
+    TextSettings.Font.Size = 18.000000000000000000
+    TabOrder = 19
+    object cmbPrint: TComboBox
+      Items.Strings = (
+        'Graph'
+        'Data Figures '
+        'Aggregate Figures'
+        'Discussion')
+      Position.X = 21.000000000000000000
+      Position.Y = 38.000000000000000000
+      Size.Width = 220.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 38
+      OnChange = cmbPrintChange
+    end
+    object btnPrint: TButton
+      Enabled = False
+      Position.X = 160.000000000000000000
+      Position.Y = 79.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 39
+      Text = 'Print'
+      OnClick = btnPrintClick
+    end
+  end
+  object gbxExport: TGroupBox
+    StyledSettings = [Family, Style, FontColor, Other]
+    Position.X = 310.000000000000000000
+    Position.Y = 1180.000000000000000000
+    Size.Width = 267.000000000000000000
+    Size.Height = 131.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Export'
+    TextSettings.Font.Size = 18.000000000000000000
+    TabOrder = 18
+    object cmbExport: TComboBox
+      Items.Strings = (
+        'Graph'
+        'Data Figures '
+        'Aggregate Figures'
+        'Discussion')
+      Position.X = 21.000000000000000000
+      Position.Y = 38.000000000000000000
+      Size.Width = 220.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 38
+      OnChange = cmbExportChange
+    end
+    object btnExport: TButton
+      Enabled = False
+      Position.X = 160.000000000000000000
+      Position.Y = 79.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 39
+      Text = 'Export'
+      OnClick = btnExportClick
+    end
+  end
+  object gbxGraph: TGroupBox
+    StyledSettings = [Family, Style, FontColor, Other]
+    Position.X = 582.000000000000000000
+    Position.Y = 1180.000000000000000000
+    Size.Width = 267.000000000000000000
+    Size.Height = 131.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Graph Colour'
+    TextSettings.Font.Size = 18.000000000000000000
+    TabOrder = 17
+    object btnSave: TButton
+      Enabled = False
+      Position.X = 160.000000000000000000
+      Position.Y = 79.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 37
+      Text = 'Save'
+      OnClick = btnSaveClick
+    end
+    object cmbColours: TComboColorBox
+      Color = claSpringgreen
+      Position.X = 24.000000000000000000
+      Position.Y = 38.000000000000000000
+      Size.Width = 217.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 38
+      OnChange = cmbColoursChange
+    end
+    object btnDefault: TButton
+      Enabled = False
+      Position.X = 72.000000000000000000
+      Position.Y = 79.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 39
+      Text = 'Default'
+      OnClick = btnDefaultClick
+    end
+  end
+  object Rectangle1: TRectangle
+    Position.X = -67.000000000000000000
+    Position.Y = -1.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object rectClim: TRectangle
+    Opacity = 0.500000000000000000
+    Position.X = 17.000000000000000000
+    Position.Y = 41.000000000000000000
+    Size.Width = 832.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object lblClimateCode: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 34.000000000000000000
+    Position.Y = 40.000000000000000000
+    Size.Width = 120.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 36.000000000000000000
+    TextSettings.Font.StyleExt = {00040000000100000004000000}
+    TextSettings.FontColor = claChartreuse
+    Text = 'Csa'
+    TabOrder = 8
+  end
+  object lblClimateName: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 144.000000000000000000
+    Position.Y = 42.000000000000000000
+    Size.Width = 697.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00040000000100000004000000}
+    TextSettings.FontColor = claChartreuse
+    TextSettings.HorzAlign = Trailing
+    Text = 'Csa'
+    TabOrder = 7
+  end
+  object dlgSave: TSaveDialog
+    Left = 432
+    Top = 680
+  end
+  object dlgPrint: TPrintDialog
+    Left = 440
+    Top = 688
+  end
+  object dsTemperature: TDataSource
+    Left = 424
+    Top = 552
+  end
+  object BindSourceDB1: TBindSourceDB
+    ScopeMappings = <>
+    Left = 681
+    Top = 721
+  end
+end
