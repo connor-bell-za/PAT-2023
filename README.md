@@ -28,7 +28,7 @@ PAT differs from subject to subject.
 - Restart the application.
 
 ### Climate Analysis
-<img src="Climate.PNG" width="245" height="164"> <img src="Climate Graph.PNG" width="245" height="164">
+<img src="Climate.PNG" width="245" height="164"> <img src="Climate Graph.PNG" width="245" height="164"> <img src="Discussion.PNG" width="245" height="164">
 - View up-to-date climate data, like annual average temperature and rainfall values.
 - View temperature and rainfall data in a graph and in a table.
 - View the climate trend for temperature and rainfall.
