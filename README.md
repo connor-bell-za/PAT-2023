@@ -29,7 +29,7 @@ Images showing the various screens of the application, what they do and how they
 - View recent climate news. 
 
 ### Settings 
-<img src="Connected Settings.PNG" width="245" height="164"> <img src="Disconnected Settings.PNG" width="245" height="164"> <img src="Connection Failed Settings.PNG" width="245" height="164"> 
+<img src="Settings Connected.PNG" width="245" height="164"> <img src="Settings Disconnected.PNG" width="245" height="164"> <img src="Settings Connection Failed.PNG" width="245" height="164"> 
 - Manage the connection to the climate database.
 - Change the database location.
 - Manage the OpenAI API Key for the AI climate discussion. 
