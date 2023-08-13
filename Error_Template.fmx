@@ -23,7 +23,7 @@ object frmError: TfrmError
     object lblErrorHeading: TLabel
       StyledSettings = []
       Position.X = 27.000000000000000000
-      Position.Y = 35.000000000000000000
+      Position.Y = 24.000000000000000000
       Size.Width = 413.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -35,9 +35,9 @@ object frmError: TfrmError
     object lblErrorMessage: TLabel
       StyledSettings = []
       Position.X = 28.000000000000000000
-      Position.Y = 80.000000000000000000
+      Position.Y = 73.000000000000000000
       Size.Width = 357.000000000000000000
-      Size.Height = 50.000000000000000000
+      Size.Height = 53.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'labelstyle'
       TextSettings.Font.Size = 18.000000000000000000

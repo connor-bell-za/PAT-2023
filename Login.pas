@@ -112,16 +112,6 @@ begin
                         + ' LOGIN');
                         CloseFile(txtFile);
 
-                        // Load Activity into Memo
-                        AssignFile(txtFile, 'Log.txt');
-                        Reset(txtFile);
-                        frmMain.fraDataMan1.mmLog.Lines.Clear;
-                        while not Eof(txtFile) do
-                          begin
-                            Readln(txtFile, sLine);
-                            frmMain.fraDataMan1.mmLog.Lines.Add(sLine);
-                          end;
-                        CloseFile(txtFile);
                       end;
                   end
                 else

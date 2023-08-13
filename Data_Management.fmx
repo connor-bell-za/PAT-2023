@@ -1,11 +1,11 @@
 object fraDataMan: TfraDataMan
   Size.Width = 928.000000000000000000
-  Size.Height = 1120.000000000000000000
+  Size.Height = 812.000000000000000000
   Size.PlatformDefault = False
   object pnlSQL: TPanel
     Anchors = [akLeft, akTop, akRight]
     Position.X = 31.000000000000000000
-    Position.Y = 21.000000000000000000
+    Position.Y = 92.000000000000000000
     Size.Width = 857.000000000000000000
     Size.Height = 532.000000000000000000
     Size.PlatformDefault = False
@@ -95,8 +95,8 @@ object fraDataMan: TfraDataMan
   object Panel3: TPanel
     Anchors = [akLeft, akTop, akRight]
     Position.X = 31.000000000000000000
-    Position.Y = 573.000000000000000000
-    Size.Width = 843.000000000000000000
+    Position.Y = 645.000000000000000000
+    Size.Width = 842.000000000000000000
     Size.Height = 116.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
@@ -145,51 +145,110 @@ object fraDataMan: TfraDataMan
       TabOrder = 3
     end
   end
-  object Panel1: TPanel
-    Anchors = [akLeft, akTop, akRight]
-    Position.X = 31.000000000000000000
-    Position.Y = 709.000000000000000000
-    Size.Width = 843.000000000000000000
-    Size.Height = 388.000000000000000000
+  object Label1: TLabel
+    StyledSettings = [Family, Style]
+    Position.X = 32.000000000000000000
+    Position.Y = 6.000000000000000000
+    Size.Width = 152.000000000000000000
+    Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.FontColor = xFF007FDF
+    Text = 'Quick Actions'
     TabOrder = 1
-    object Label1: TLabel
-      StyledSettings = [Family, Style, FontColor]
-      Position.X = 23.000000000000000000
-      Position.Y = 10.000000000000000000
-      Size.Width = 210.000000000000000000
-      Size.Height = 27.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.Font.Size = 20.000000000000000000
-      Text = 'User Activity Log'
-      TabOrder = 1
-    end
-    object mmLog: TMemo
-      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-      DataDetectorTypes = []
-      ReadOnly = True
-      StyledSettings = [Style, FontColor]
-      TextSettings.Font.Family = 'Cascadia Code'
-      TextSettings.Font.Size = 16.000000000000000000
-      Position.X = 23.000000000000000000
-      Position.Y = 48.000000000000000000
-      Size.Width = 786.000000000000000000
-      Size.Height = 276.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 2
-      Viewport.Width = 786.000000000000000000
-      Viewport.Height = 276.000000000000000000
-    end
-    object btnUpdate: TButton
-      Position.X = 679.000000000000000000
-      Position.Y = 332.000000000000000000
-      Size.Width = 130.000000000000000000
+  end
+  object pnlQA: TCalloutRectangle
+    Fill.Color = claBlack
+    Position.X = 240.000000000000000000
+    Position.Y = 15.000000000000000000
+    Size.Width = 600.000000000000000000
+    Size.Height = 63.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = xFF0068B9
+    Stroke.Thickness = 3.000000000000000000
+    CalloutWidth = 23.000000000000000000
+    CalloutLength = 11.000000000000000000
+    CalloutPosition = Left
+    object btnCount: TButton
+      Position.X = 309.000000000000000000
+      Position.Y = 11.000000000000000000
+      Size.Width = 87.000000000000000000
       Size.Height = 41.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 3
-      Text = 'Update Log'
-      OnClick = btnUpdateClick
+      TabOrder = 10
+      Text = 'Count'
+      OnClick = btnCountClick
     end
+    object btnTotal: TButton
+      Position.X = 404.000000000000000000
+      Position.Y = 11.000000000000000000
+      Size.Width = 87.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      Text = 'Total'
+      OnClick = btnExecuteClick
+    end
+    object btnAverage: TButton
+      Position.X = 499.000000000000000000
+      Position.Y = 11.000000000000000000
+      Size.Width = 87.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      Text = 'Average'
+      OnClick = btnAverageClick
+    end
+    object btnSort: TButton
+      Position.X = 24.000000000000000000
+      Position.Y = 11.000000000000000000
+      Size.Width = 87.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = 'Sort'
+      OnClick = btnSortClick
+    end
+    object btnMax: TButton
+      Position.X = 119.000000000000000000
+      Position.Y = 11.000000000000000000
+      Size.Width = 87.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 9
+      Text = 'Maximum'
+      OnClick = btnMaxClick
+    end
+    object btnMin: TButton
+      Position.X = 214.000000000000000000
+      Position.Y = 11.000000000000000000
+      Size.Width = 87.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      Text = 'Minimum'
+      OnClick = btnMinClick
+    end
+  end
+  object cmbTable: TComboBox
+    Hint = 'Climate'
+    Items.Strings = (
+      'Select Table '
+      'tblPlaces'
+      'tblNews'
+      'tblClimates'
+      'tblRainfall'
+      'tblTemperature')
+    ItemIndex = 0
+    ItemHeight = 41.000000000000000000
+    Position.X = 32.000000000000000000
+    Position.Y = 38.000000000000000000
+    Size.Width = 186.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'comboboxstyle'
+    TabOrder = 24
+    OnChange = cmbTableChange
   end
   object dsClimates: TDataSource
     DataSet = dmDatabase.tblClimates

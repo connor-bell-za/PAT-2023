@@ -1,4 +1,4 @@
-unit Data_Management;
+﻿unit Data_Management;
 
 interface
 
@@ -9,7 +9,7 @@ uses
   FMX.Memo, FMX.ListBox, FMX.Layouts, System.Rtti, FMX.Grid.Style, FMX.Grid,
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, System.Bindings.Outputs,
   Fmx.Bind.Editors, Data.Bind.Components, Data.DB, Fmx.Bind.Grid,
-  Data.Bind.Grid, Data.Bind.DBScope, Data.Win.ADODB, Vcl.OleAuto;
+  Data.Bind.Grid, Data.Bind.DBScope, Data.Win.ADODB, Vcl.OleAuto, FMX.MultiView;
 
 type
   TfraDataMan = class(TFrame)
@@ -35,16 +35,26 @@ type
     dsTemperature: TDataSource;
     dsNews: TDataSource;
     btnExport: TButton;
-    Panel1: TPanel;
+    pnlQA: TCalloutRectangle;
     Label1: TLabel;
-    mmLog: TMemo;
-    btnUpdate: TButton;
+    btnSort: TButton;
+    btnCount: TButton;
+    btnTotal: TButton;
+    btnAverage: TButton;
+    btnMax: TButton;
+    btnMin: TButton;
+    cmbTable: TComboBox;
     procedure btnExecuteClick(Sender: TObject);
     procedure ListBoxItem1Click(Sender: TObject);
     procedure ListBoxItem2Click(Sender: TObject);
     procedure btnOpenClick(Sender: TObject);
-    procedure btnUpdateClick(Sender: TObject);
     procedure btnExportClick(Sender: TObject);
+    procedure cmbTableChange(Sender: TObject);
+    procedure btnSortClick(Sender: TObject);
+    procedure btnMaxClick(Sender: TObject);
+    procedure btnMinClick(Sender: TObject);
+    procedure btnCountClick(Sender: TObject);
+    procedure btnAverageClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,6 +67,43 @@ implementation
 {$R *.fmx}
 
 uses Main, dmData, dmDB, Temperature, Data_Capture, Error_Template;
+
+procedure TfraDataMan.btnAverageClick(Sender: TObject);
+var
+  sTable : string;
+  sYear : string;
+begin
+ // AVG
+  sTable :=  cmbTable.Items[cmbTable.ItemIndex];
+  if sTable = 'tblPlaces' then
+    begin
+      mmSQL.Lines.Add('SELECT SUM(Population) AS [Total People] FROM tblPlaces');
+    end
+  else
+  if sTable = 'tblRainfall' then
+    begin
+      sYear := InputBox('Query Wizard', 'Year (2010 - 2022):', '2010');
+      mmSQL.Lines.Add('SELECT AVG(' + sYear + ') AS [Average Rainfall for ' + sYear
+      + '] FROM tblRainfall');
+    end
+  else
+  if sTable = 'tblTemperature' then
+    begin
+      sYear := InputBox('Query Wizard', 'Year (2010 - 2022):', '2010');
+      mmSQL.Lines.Add('SELECT AVG(' + sYear + ') AS [Average Temperature for ' + sYear
+      + '] FROM tblTemperature');
+    end;
+end;
+
+procedure TfraDataMan.btnCountClick(Sender: TObject);
+var
+  sTable : string;
+begin
+  // COUNT
+  sTable :=  cmbTable.Items[cmbTable.ItemIndex];
+  mmSQL.Lines.Add('SELECT COUNT(*) FROM ' + sTable);
+
+end;
 
 procedure TfraDataMan.btnExecuteClick(Sender: TObject);
 var
@@ -72,13 +119,6 @@ begin
           qryMain.Active := True;
           qryMain.ExecSQL;
         end;
-
-      // Log Activity
-      AssignFile(txtFile, 'Log.txt');
-      Append(txtFile);
-      Writeln(txtFile, '[' + DateToStr(Now) + ' ' + TimeToStr(Now) + ']' +
-      ' Emplid: ' + frmMain.fraDataAccess1.sEmplid + ' ' + ' SQL EXECUTION');
-      CloseFile(txtFile);
     end
   else
     begin
@@ -128,27 +168,58 @@ begin
   Xls.Visible := True;
 end;
 
+procedure TfraDataMan.btnMaxClick(Sender: TObject);
+var
+  sTable : string;
+begin
+  // MAXIMUM
+  sTable :=  cmbTable.Items[cmbTable.ItemIndex];
+  if sTable = 'tblPlaces' then
+    begin
+      mmSQL.Lines.Add('SELECT Place_Name, MAX(Population) AS [Highest Population] FROM tblPlaces');
+    end;
+end;
+
+procedure TfraDataMan.btnMinClick(Sender: TObject);
+var
+  sTable : string;
+begin
+  // MINUMUM
+  sTable :=  cmbTable.Items[cmbTable.ItemIndex];
+  if sTable = 'tblPlaces' then
+    begin
+      mmSQL.Lines.Add('SELECT Place_Name, MIN(Population) AS [Lowest Population] FROM tblPlaces');
+    end;
+end;
+
 procedure TfraDataMan.btnOpenClick(Sender: TObject);
 begin
   // Open Data Capture Form
   frmDataCapture.Show;
 end;
 
-procedure TfraDataMan.btnUpdateClick(Sender: TObject);
+procedure TfraDataMan.btnSortClick(Sender: TObject);
 var
-  sLine : string;
-  txtFile : TextFile;
+  sTable : string;
+  sField : string;
+  sKind : string;
 begin
-  // Load Activity into Memo
-  AssignFile(txtFile, 'Log.txt');
-  Reset(txtFile);
-  frmMain.fraDataMan1.mmLog.Lines.Clear;
-  while not Eof(txtFile) do
-    begin
-      Readln(txtFile, sLine);
-      mmLog.Lines.Add(sLine);
-    end;
-  CloseFile(txtFile);
+  // SORT QUICK ACTION
+  sTable :=  cmbTable.Items[cmbTable.ItemIndex];
+  sField := InputBox('Query Wizard', 'Sort Field (Enter Field Name):', '');
+  sKind := Uppercase(InputBox('Query Wizard', 'Sort Field By (Ascending or Descending):', 'ASC/DESC'));
+  mmSQL.Lines.Add('SELECT * FROM ' + sTable + ' ORDER BY ' + sField + ' ' + sKind);
+end;
+
+procedure TfraDataMan.cmbTableChange(Sender: TObject);
+var
+  sTable : string;
+begin
+  // Change Table Selection
+  // QUICK ACTIONS
+  sTable :=  cmbTable.Items[cmbTable.ItemIndex];
+
+
 end;
 
 procedure TfraDataMan.ListBoxItem1Click(Sender: TObject);

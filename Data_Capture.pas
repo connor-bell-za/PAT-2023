@@ -10,7 +10,7 @@ uses
   FMX.EditBox, FMX.NumberBox, System.Rtti, FMX.Grid.Style, FMX.Grid,
   Data.Bind.Components, Data.Bind.DBScope, Data.Bind.EngExt, Fmx.Bind.DBEngExt,
   Fmx.Bind.Grid, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Grid,
-  Data.DB, Data.Win.ADODB, DateUtils, FMX.Objects;
+  Data.DB, Data.Win.ADODB, DateUtils, FMX.Objects, Math;
 
 type
   TfrmDataCapture = class(TForm)
@@ -107,16 +107,22 @@ type
     pnlBacking1: TRectangle;
     qryMain: TADOQuery;
     procedure btnCancelClick(Sender: TObject);
-    procedure btnAddTempClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    procedure Add_Place;
   end;
 
 var
   frmDataCapture: TfrmDataCapture;
+  // Add_Place Procedure Variables
+  bExists, bAdded, bValid : Boolean;
+  bID, bID2 : Boolean;
+  sPlaceName, sPlaceID, sProvince, sClimateName,
+  sImage, sMaritime, sDescription, sDate, sPopulation, sClimateID : string;
 
 implementation
 
@@ -124,56 +130,169 @@ implementation
 
 uses Main, Data_Management, dmDB_Code, dmDB, Error_Template;
 
-procedure TfrmDataCapture.btnAddTempClick(Sender: TObject);
-var
-  bValid : Boolean;
-  sYear : string;
-  rTemp : Real;
+procedure TfrmDataCapture.Add_Place;
 begin
- { // Add New Temperature
-  bValid := False;
-  if (StrToInt(edtYear.Text) >= 2010) and (StrToInt(edtYear.Text) <= 2022) then
-    begin
-        frmError.lblErrorMessage.Text := 'Data for ' + edtYear.Text +
-        ' already exists. Please modify the data via the SQL terminal.';
-        frmError.Show;
-        pnlBacking1.Visible := True;
-        bValid := False;
-    end
-  else
-    begin
-      bValid := True;
-    end;
+  // ADD PLACE
+  // Procedure to add a new place to the tblPlaces table of the database.
 
-  if StrToInt(edtYear.Text) > CurrentYear then
+  { Validate that all components have data input. Check no data is missing.
+    If data is missing, then display a warning message. }
+    bValid := True;
+  if (edtPlaceName.Text = '') or
+     (cmbProvince.Items[cmbProvince.ItemIndex] = 'Select Province') or
+     (cmbClimate.Items[cmbClimate.ItemIndex] = 'Select Climate') or
+     (nbPopulation.Value = 0) or (mmDescriptionPlace.Text = '') or
+     (edtImageLocationPlace.Text = '') then
     begin
-      frmError.lblErrorMessage.Text := 'Year should be ' + IntToStr(CurrentYear) +
-      ' or earlier. Please choose another year.';
+      // Show Error Message Form
+      frmError.lblErrorHeading.Text := 'Missing Data';
+      frmError.lblErrorMessage.Text := 'One or more fields are missing data.' +
+          ' Please populate these fields and try again.';
       frmError.Show;
       pnlBacking1.Visible := True;
       bValid := False;
     end
   else
     begin
-      bValid := True;
+      with dmData_Code do
+        begin
+          // All field components have data
+          { Validate that the place being added does not already exist in
+            the database }
+
+          // Put field component data into string variables (For SQL)
+          sPlaceName := edtPlaceName.Text;
+          sProvince := cmbProvince.Items[cmbProvince.ItemIndex];
+          sClimateName := cmbClimate.Items[cmbClimate.ItemIndex];
+          sImage := edtImageLocationPlace.Text;
+          sDate := DateToStr(dpDateEstablished.Date);
+          sPopulation := FloatToStr(nbPopulation.Value);
+          sDescription := mmDescriptionPlace.Text;
+
+          // Add Maritime Status
+          if chkMaritime.IsChecked = True then
+            begin
+              sMaritime := 'True';
+            end
+          else
+            begin
+              sMaritime := 'False';
+            end;
+
+          // Search through tblPlaces to find if the place exists.
+          bExists := False;
+          tblPlaces.First;
+          while not tblPlaces.Eof do
+            begin
+              if tblPlaces['Place_Name'] = sPlaceName then
+                begin
+                  bExists := True;
+                  Exit;
+                end;
+              tblPlaces.Next;
+            end;
+
+          if bExists = True then
+            begin
+              // The place already exists in the database. Show Error
+              frmError.lblErrorHeading.Text := 'Place Already Exists';
+              frmError.lblErrorMessage.Text := 'The place you tried to add' +
+              ' to the database "tblPlaces" already exists as a record.' +
+              ' Modify the record in the SQL command line ';
+              frmError.Show;
+              pnlBacking1.Visible := True;
+            end
+          else
+            begin
+              { The place does not already exist. Add the rest of the data to
+                the database. }
+
+              { Create a THREE letter, uppercase Place_ID from the place name.
+                Check if it already exists. If it does, create a different one }
+              bID := False;
+              sPlaceID := Uppercase(Copy(sPlaceName, 1, 3));
+              tblPlaces.First;
+              while not tblPlaces.Eof do
+                begin
+                  if tblPlaces['Place_ID'] = sPlaceID then
+                    begin
+                      // The place ID already exists.
+                      bID := True;
+                    end
+                  else
+                    begin
+                      bID := False;
+                    end;
+                  tblPlaces.Next;
+                end;
+
+              if bID = True then
+                begin
+                  { The Place_ID already exists, and the one created is not
+                    unique. Try last three place name letters }
+                    sPlaceID := Uppercase(Copy(sPlaceName, Length(sPlaceName) - 3, 3));
+                    // Check this NEW Place_ID to be unique.
+                  bID2 := False;
+                  tblPlaces.First;
+                  while not tblPlaces.Eof do
+                    begin
+                      if tblPlaces['Place_ID'] = sPlaceID then
+                        begin
+                          // The place ID already exists.
+                          bID2 := True;
+                        end
+                      else
+                        begin
+                          bID2 := False;
+                          bID := False;
+                        end;
+                      tblPlaces.Next;
+                    end;
+
+                  if bID2 = True then
+                    begin
+                      // Create a RANDOM 3 Digit Uppercase Number  //65-90
+                      sPlaceID :=
+                        Chr(RandomRange(65, 90)) + Chr(RandomRange(65, 90)) +
+                        Chr(RandomRange(65, 90));
+                        bID2 := False;
+                        bID := False;
+                    end;
+                end;
+
+              // If PlaceID is unique then add the record to the database
+              if (bID = False) and (bID2 = False) then
+              begin
+                bAdded := False;
+                { Get the Climate_ID from the Climate Name }
+                tblClimates.First;
+                while not tblClimates.Eof do
+                  begin
+                    if tblClimates['Koppen_Name'] = sClimateName then
+                      begin
+                        sClimateID := tblPlaces['Climate_ID'];
+                      end;
+                    tblClimates.Next;
+                  end;
+
+                { Add the Place to the database using SQL! }
+                qryMain.SQL.Clear;
+
+                // Add SQL Statement
+                qryMain.SQL.Add('INSERT INTO tblPlaces (Place_ID, Place_Name' +
+                ', Climate_ID, Province, Maritime, Population, ' +
+                'Image_Location, Established) VALUES (' +
+                sPlaceID.QuotedString + ', ' + sPlaceName.QuotedString + ', ' +
+                sClimateID.QuotedString + ', ' + sProvince.QuotedString
+                 + ', ' + sMaritime + ', ' + sPopulation + ', ' +
+                 sImage.QuotedString + ', #' + sDate + '#' + ')');
+
+                // Execute the SQL Query.
+                qryMain.ExecSQL;
+              end;
+            end;
+        end;
     end;
-
-  if bValid = True then
-    begin
-      // Add new year + data into database via SQL.
-       rTemp := nbTempAvg.Value;
-      sYear := edtYear.Text;
-      qryMain.Active := False;
-      qryMain.SQL := '';
-      qryMain.Active := True;
-      qryMain.ExecSQL;
-    end;                     }
-
-
- { qryMain.Active := False;
-  qryMain.SQL := mmSQL.Lines;
-  qryMain.Active := True;
-  qryMain.ExecSQL;  }
 end;
 
 procedure TfrmDataCapture.btnCancelClick(Sender: TObject);
@@ -184,53 +303,48 @@ end;
 
 procedure TfrmDataCapture.btnSaveClick(Sender: TObject);
 var
-  sPlace_ID : string;
-  sClimate_Name : string;
-  sClimate_ID : string;
-  sMaritime : string;
+  MyClass: TComponent;
 begin
-  // Add to Database
-  if tbcMain.ActiveTab = tblPlaces then
+  if tblPlaces.IsVisible = True then
     begin
-      // Add Data to tblPlaces
-      if (edtPlaceName.Text = '') or
-      (cmbProvince.Items[cmbProvince.ItemIndex] = 'Select Province') or
-      (cmbClimate.Items[cmbClimate.ItemIndex] = 'Select Climate') or
-      (nbPopulation.Value = 0) or (mmDescriptionPlace.Text = '') or
-      (edtImageLocationPlace.Text = '') then
-        begin
-          frmError.lblErrorMessage.Text := 'One or more fields are missing data.' +
-          ' Please populate these fields and try again.';
-          frmError.Show;
-          pnlBacking1.Visible := True;
-        end
-      else
-        begin
-          // ADD PLACE
-
-          // Get Climate Name
-          sClimate_Name := cmbClimate.Items[cmbClimate.ItemIndex];
-
-          // Get Climate_ID from the Climate Name
-          with dmData_Code do
-            begin
-              tblClimates.First;
-              while not tblClimates.Eof do
-                begin
-                  if tblClimates['Koppen_Name'] = sClimate_Name then
-                    begin
-                      sClimate_ID := tblClimates['Climate_ID'];
-                    end;
-                  tblClimates.Next;
-                end;
-            end;
-
-          // Add Place using SQL
-        end;
-
+      // Add Place
+      try
+        // Add Place Using Add_Place procedure.
+        Add_Place;
+        frmError.lblErrorHeading.Text := 'Success';
+        frmError.lblErrorMessage.Text := 'Successfully added ' + sPlaceName +
+        ' to "tblPlaces".';
+        frmError.Rectangle1.Fill.Color := TAlphaColorRec.Limegreen;
+        frmError.Rectangle1.Stroke.Color := TAlphaColorRec.Limegreen;
+        frmError.Show;
+        pnlBacking1.Visible := True;
+      except
+        // Error
+        frmError.lblErrorHeading.Text := 'Error';
+        frmError.lblErrorMessage.Text := 'An error occurred trying to add data '
+        + 'to "tblPlaces". Ensure that all data capture fields are populated and '
+        + 'that the place does not already exist.';
+        frmError.lblErrorMessage.TextSettings.Font.Size := 14;
+        frmError.Show;
+        frmError.Rectangle1.Fill.Color := TAlphaColorRec.Red;
+        frmError.Rectangle1.Stroke.Color := TAlphaColorRec.Red;
+        pnlBacking1.Visible := True;
+      end;
     end;
+end;
 
-
+procedure TfrmDataCapture.FormActivate(Sender: TObject);
+begin
+  // Add Climates to Climate Combobox
+  with dmData_Code do
+    begin
+      tblClimates.First;
+      while not tblClimates.Eof do
+        begin
+          cmbClimate.Items.Add(tblClimates['Koppen_Name']);
+          tblClimates.Next;
+        end;
+    end;
 end;
 
 end.

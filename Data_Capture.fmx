@@ -9,6 +9,7 @@ object frmDataCapture: TfrmDataCapture
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnActivate = FormActivate
   DesignerMasterStyle = 0
   object ToolBar1: TToolBar
     Size.Width = 980.000000000000000000
@@ -133,8 +134,15 @@ object frmDataCapture: TfrmDataCapture
           Hint = 'Climate'
           Items.Strings = (
             'Select Place Name'
-            'Gauteng')
-          ItemIndex = 0
+            'Gauteng'
+            'North West'
+            'Limpopo'
+            'Mpumalanga'
+            'KwaZulu-Natal'
+            'Free State'
+            'Northern Cape'
+            'Western Cape'
+            'Eastern Cape')
           ItemHeight = 41.000000000000000000
           Position.X = 378.000000000000000000
           Position.Y = 94.000000000000000000
@@ -196,6 +204,7 @@ object frmDataCapture: TfrmDataCapture
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           TabOrder = 26
           Cursor = crIBeam
+          Max = 100000000.000000000000000000
           TextSettings.Font.Size = 16.000000000000000000
           Position.X = 23.000000000000000000
           Position.Y = 182.000000000000000000
@@ -255,8 +264,8 @@ object frmDataCapture: TfrmDataCapture
           Size.Height = 153.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 23
-          Viewport.Width = 585.000000000000000000
-          Viewport.Height = 149.000000000000000000
+          Viewport.Width = 589.000000000000000000
+          Viewport.Height = 153.000000000000000000
         end
         object Label19: TLabel
           StyledSettings = [Family, FontColor]
@@ -507,8 +516,8 @@ object frmDataCapture: TfrmDataCapture
           Size.Height = 153.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 20
-          Viewport.Width = 902.000000000000000000
-          Viewport.Height = 149.000000000000000000
+          Viewport.Width = 906.000000000000000000
+          Viewport.Height = 153.000000000000000000
         end
         object Label12: TLabel
           StyledSettings = [Family, FontColor]
@@ -657,8 +666,8 @@ object frmDataCapture: TfrmDataCapture
           Size.Height = 122.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 27
-          Viewport.Width = 585.000000000000000000
-          Viewport.Height = 118.000000000000000000
+          Viewport.Width = 589.000000000000000000
+          Viewport.Height = 122.000000000000000000
         end
         object Label29: TLabel
           StyledSettings = [Family, FontColor]
@@ -688,7 +697,7 @@ object frmDataCapture: TfrmDataCapture
           TabOrder = 14
           TextSettings.Font.Size = 16.000000000000000000
           Position.X = 378.000000000000000000
-          Position.Y = 95.000000000000000000
+          Position.Y = 102.000000000000000000
           Size.Width = 234.000000000000000000
           Size.Height = 41.000000000000000000
           Size.PlatformDefault = False
@@ -935,7 +944,6 @@ object frmDataCapture: TfrmDataCapture
           Text = 'Add'
           TextSettings.Font.Size = 16.000000000000000000
           TextSettings.Font.StyleExt = {00060000000000000004000000}
-          OnClick = btnAddTempClick
         end
         object GroupBox1: TGroupBox
           Position.X = 23.000000000000000000
