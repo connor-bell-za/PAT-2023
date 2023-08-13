@@ -1,6 +1,6 @@
 object fraSettings: TfraSettings
   Size.Width = 928.000000000000000000
-  Size.Height = 836.000000000000000000
+  Size.Height = 574.000000000000000000
   Size.PlatformDefault = False
   object Button1: TButton
     StyledSettings = [Family, Style, FontColor]
@@ -61,9 +61,9 @@ object fraSettings: TfraSettings
   object pnlConnectionString: TPanel
     Anchors = [akLeft, akTop, akRight]
     Position.X = 32.000000000000000000
-    Position.Y = 171.000000000000000000
+    Position.Y = 169.000000000000000000
     Size.Width = 857.000000000000000000
-    Size.Height = 134.000000000000000000
+    Size.Height = 124.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
     object lblConnectionStringHeading: TLabel
@@ -120,9 +120,9 @@ object fraSettings: TfraSettings
   object pnlConnectionButtons: TPanel
     Anchors = [akLeft, akTop, akRight]
     Position.X = 32.000000000000000000
-    Position.Y = 323.000000000000000000
+    Position.Y = 308.000000000000000000
     Size.Width = 857.000000000000000000
-    Size.Height = 132.000000000000000000
+    Size.Height = 118.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object lblConnectionHeading: TLabel
@@ -190,9 +190,9 @@ object fraSettings: TfraSettings
   object Panel1: TPanel
     Anchors = [akLeft, akTop, akRight]
     Position.X = 32.000000000000000000
-    Position.Y = 470.000000000000000000
+    Position.Y = 438.000000000000000000
     Size.Width = 857.000000000000000000
-    Size.Height = 134.000000000000000000
+    Size.Height = 115.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     object Label1: TLabel

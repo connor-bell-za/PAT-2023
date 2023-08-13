@@ -15,7 +15,8 @@ uses
   Weather_Frame, Settings, Climate_Frame, DateUtils, Temperature, FMX.Objects,
   WinInet,
   FMX.Styles, About, ShellAPI, Windows, System.Actions, FMX.ActnList,
-  Login, Data_Management, Climate_Action, OpenAI;
+  Login, Data_Management, Climate_Action, OpenAI, FMX.Effects,
+  FMX.Filter.Effects, FMX.Ani;
 
 type
   TfrmMain = class(TForm)
@@ -25,7 +26,7 @@ type
     btnSettings: TSpeedButton;
     ImageList1: TImageList;
     btnAbout: TSpeedButton;
-    ToolBar1: TToolBar;
+    tlbMain: TToolBar;
     btnUpdate: TSpeedButton;
     scrbxWeather: TScrollBox;
     scrlbxSettings: TScrollBox;
@@ -55,6 +56,13 @@ type
     fraAction1: TfraAction;
     pnlBacking: TPanel;
     pnlBacking1: TRectangle;
+    ShadowEffect1: TShadowEffect;
+    CalloutPanel1: TCalloutPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    FloatAnimation1: TFloatAnimation;
+    ShadowEffect2: TShadowEffect;
+    GlowEffect1: TGlowEffect;
     procedure btnSettingsClick(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure MultiView1Click(Sender: TObject);
@@ -82,6 +90,7 @@ type
     procedure UpdateWeather;
     procedure OpenLink;
     procedure UpdateNews;
+    procedure GitLink;
   end;
 
 var
@@ -292,6 +301,13 @@ begin
 
   // Hide Menu
   MultiView1.HideMaster;
+end;
+
+procedure TfrmMain.GitLink;
+begin
+  // Open Github Project Page Link
+  ShellExecute(HWND_DESKTOP, 'open',
+  'https://github.com/connor-bell-za/PAT-2023' ,nil,nil, SW_SHOWNORMAL) ;
 end;
 
 procedure TfrmMain.MultiView1Click(Sender: TObject);

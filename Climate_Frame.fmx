@@ -2,7 +2,7 @@ object fraClimate: TfraClimate
   Size.Width = 928.000000000000000000
   Size.Height = 578.000000000000000000
   Size.PlatformDefault = False
-  object ListBox1: TListBox
+  object lstType: TListBox
     Anchors = [akLeft, akTop, akRight]
     Position.X = 19.000000000000000000
     Position.Y = 63.000000000000000000
@@ -41,6 +41,13 @@ object fraClimate: TfraClimate
       Text = '  Temperature'
       OnClick = ListBoxItem2Click
     end
+    object ShadowEffect1: TShadowEffect
+      Distance = 14.000000000000000000
+      Direction = 90.000000000000000000
+      Softness = 0.899999976158142100
+      Opacity = 0.600000023841857900
+      ShadowColor = xFF171717
+    end
   end
   object Popup1: TPopup
     Position.X = 232.000000000000000000
@@ -53,10 +60,10 @@ object fraClimate: TfraClimate
     Enabled = True
     Duration = 0.200000002980232200
   end
-  object Z: TScrollBox
+  object scrlbxData: TScrollBox
     Anchors = [akLeft, akTop, akRight, akBottom]
     Position.X = 19.000000000000000000
-    Position.Y = 129.000000000000000000
+    Position.Y = 118.000000000000000000
     Size.Width = 886.000000000000000000
     Size.Height = 449.000000000000000000
     Size.PlatformDefault = False
@@ -82,8 +89,8 @@ object fraClimate: TfraClimate
       inherited mmClimateDescrip: TMemo
         StyledSettings = [Style, FontColor]
         TextSettings.Font.Size = 16.000000000000000000
-        Viewport.Width = 828.000000000000000000
-        Viewport.Height = 139.000000000000000000
+        Viewport.Width = 832.000000000000000000
+        Viewport.Height = 143.000000000000000000
       end
       inherited Panel1: TPanel
         inherited lblSeasonRainfall: TLabel
@@ -176,22 +183,6 @@ object fraClimate: TfraClimate
       inherited lblMisc: TLabel
         TextSettings.Font.StyleExt = {00060000000000000004000000}
       end
-      inherited gbxPrinting: TGroupBox
-        inherited cmbPrint: TComboBox
-          TabOrder = 38
-        end
-        inherited btnPrint: TButton
-          TabOrder = 39
-        end
-      end
-      inherited gbxExport: TGroupBox
-        inherited cmbExport: TComboBox
-          TabOrder = 38
-        end
-        inherited btnExport: TButton
-          TabOrder = 39
-        end
-      end
       inherited lblClimateCode: TLabel
         StyledSettings = [FontColor]
         Position.X = 32.000000000000000000
@@ -202,6 +193,25 @@ object fraClimate: TfraClimate
         Size.Width = 695.000000000000000000
         TextSettings.Font.StyleExt = {00040000000100000004000000}
         Text = 'Csa  '
+      end
+      inherited Label5: TLabel
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+      inherited lblAboutCity: TLabel
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+      end
+      inherited imgCity: TImage
+        MultiResBitmap.Height = 1024
+        MultiResBitmap.Width = 1820
+      end
+      inherited Panel3: TPanel
+        inherited lblPopulation: TLabel
+          TabOrder = 1
+        end
+      end
+      inherited mmCity: TMemo
+        Viewport.Width = 302.000000000000000000
+        Viewport.Height = 316.000000000000000000
       end
       inherited dsTemperature: TDataSource
         Left = 408
@@ -235,7 +245,7 @@ object fraClimate: TfraClimate
     object lblLocation: TLabel
       Align = Right
       StyledSettings = [FontColor]
-      Position.X = 607.000000000000000000
+      Position.X = 661.000000000000000000
       Size.Width = 217.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -245,23 +255,12 @@ object fraClimate: TfraClimate
       Text = 'Johannesburg'
       TabOrder = 85
     end
-    object btnAboutCity: TSpeedButton
-      Align = MostRight
-      ClipChildren = True
-      Hint = 'About the City'
-      Position.X = 832.000000000000000000
-      Size.Width = 54.000000000000000000
-      Size.Height = 49.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = 'infotoolbutton'
-      OnClick = btnAboutCityClick
-    end
     object GridLayout1: TGridLayout
       Align = Right
       ItemHeight = 64.000000000000000000
       ItemWidth = 64.000000000000000000
       Orientation = Horizontal
-      Position.X = 824.000000000000000000
+      Position.X = 878.000000000000000000
       Size.Width = 8.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False

@@ -12,7 +12,7 @@ uses
   System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.EngExt,
   Fmx.Bind.DBEngExt, Data.Bind.Grid, Data.DB, FMX.Colors, FMX.Objects,
   FMX.Printer, OpenAI.Chat, OpenAI.API, OpenAI.Chat.Functions,
-  OpenAI.Engines, OpenAI.Completions, OpenAI;
+  OpenAI.Engines, OpenAI.Completions, OpenAI, FMX.Effects, FMX.Filter.Effects;
 
 type
   TfraClimateData = class(TFrame)
@@ -67,6 +67,14 @@ type
     rectClim: TRectangle;
     dlgSave: TSaveDialog;
     dlgPrint: TPrintDialog;
+    Label5: TLabel;
+    lblAboutCity: TLabel;
+    imgCity: TImage;
+    Panel3: TPanel;
+    lblPopulation: TLabel;
+    lblEstablished: TLabel;
+    GlowEffect1: TGlowEffect;
+    mmCity: TMemo;
     procedure Button1Click(Sender: TObject);
     procedure cmbPrintChange(Sender: TObject);
     procedure cmbExportChange(Sender: TObject);
