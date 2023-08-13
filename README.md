@@ -45,14 +45,14 @@ Images showing the various screens of the application, what they do and how they
 - Read the OpenAI ChatGPT climate trend discussion.   
 
 ### Data Management 
-<img src="Login.PNG" width="245" height="164"> <img src="SQL Query.PNG" width="245" height="164"> <img src="Capture Data.PNG" width="245" height="164"> 
+<img src="Login.PNG" width="245" height="164"> <img src="SQL.PNG" width="245" height="164"> <img src="Capture Data.PNG" width="245" height="164"> 
 - Query the database using SQL (Create, Read, Update and Delete).
 - Export the query results.
 - View activity within the system.
 - Capture data for the database.
 
 ### About Screen
-<img src="About Screen.PNG" width="245" height="164">
+<img src="About.PNG" width="245" height="164">
 
 - View application license and developer information. 
 - View application version information. 
