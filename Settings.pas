@@ -31,10 +31,12 @@ type
     Panel1: TPanel;
     Label1: TLabel;
     mmKey: TMemo;
+    btnOpen: TButton;
     procedure btnLocationLookupClick(Sender: TObject);
     procedure btnConnectClick(Sender: TObject);
     procedure edtLocationChange(Sender: TObject);
     procedure btnDisconnectClick(Sender: TObject);
+    procedure btnOpenClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -95,7 +97,13 @@ begin
 
   mmConString.Lines.Clear;
   mmConString.Lines.Add(dmData_Code.conMain.ConnectionString);
+end;
 
+procedure TfraSettings.btnOpenClick(Sender: TObject);
+begin
+  // Open the OpenAI API Key management site using OpenLink in frmMain
+  frmMain.sLink := 'https://openai.com/';
+  frmMain.OpenLink;
 end;
 
 procedure TfraSettings.edtLocationChange(Sender: TObject);

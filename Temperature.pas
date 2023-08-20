@@ -12,7 +12,8 @@ uses
   System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.EngExt,
   Fmx.Bind.DBEngExt, Data.Bind.Grid, Data.DB, FMX.Colors, FMX.Objects,
   FMX.Printer, OpenAI.Chat, OpenAI.API, OpenAI.Chat.Functions,
-  OpenAI.Engines, OpenAI.Completions, OpenAI, FMX.Effects, FMX.Filter.Effects;
+  OpenAI.Engines, OpenAI.Completions, OpenAI, FMX.Effects, FMX.Filter.Effects,
+  WinInet;
 
 type
   TfraClimateData = class(TFrame)
@@ -34,7 +35,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Memo1: TMemo;
+    mmTrend: TMemo;
     strResults: TStringGrid;
     dsTemperature: TDataSource;
     BindSourceDB1: TBindSourceDB;
@@ -75,6 +76,11 @@ type
     lblEstablished: TLabel;
     GlowEffect1: TGlowEffect;
     mmCity: TMemo;
+    Line1: TLine;
+    Line2: TLine;
+    Line3: TLine;
+    Line4: TLine;
+    Line5: TLine;
     procedure Button1Click(Sender: TObject);
     procedure cmbPrintChange(Sender: TObject);
     procedure cmbExportChange(Sender: TObject);
@@ -83,31 +89,28 @@ type
     procedure btnSaveClick(Sender: TObject);
     procedure btnPrintClick(Sender: TObject);
     procedure btnExportClick(Sender: TObject);
-    procedure chkDiscussClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    arrTemperature : array[1..13, 1..2] of Real;
-    arrRainfall : array[1..13, 1..2] of Real;
-    sValues : string;
+    sValues : string; // Variable used in OpenAI procedure
     procedure Temperature;
     procedure Rainfall;
     procedure OpenAI;
-
   end;
 
 implementation
 
 {$R *.fmx}
 
-uses Data_Management, Main, dmDB, Climate_Frame, dmDB_Code;
+uses Data_Management, Main, dmDB, Climate_Frame, dmDB_Code, Error_Template;
 
 procedure TfraClimateData.btnDefaultClick(Sender: TObject);
 var
   txtFile : TextFile;
 begin
-  // Default Graph Colour
+  // Default Graph Colour Set the default colour and store in text file for
+  // next time!
   if lblMisc.Text = 'Rainfall - Misc.' then
     begin
       // Set the default colour for Rainfall Graph
@@ -133,7 +136,7 @@ end;
 
 procedure TfraClimateData.btnExportClick(Sender: TObject);
 begin
-  // Export Chart
+  // Export Chart when the user asks for it!
   if cmbExport.Items[cmbExport.ItemIndex] = 'Graph' then
     begin
       if dlgSave.Execute then
@@ -145,7 +148,7 @@ end;
 
 procedure TfraClimateData.btnPrintClick(Sender: TObject);
 begin
-  // PRINT
+  // PRINT the Graph when the user asks for it
   if dlgPrint.Execute then
     begin
       chtMain.PrintLandscape;
@@ -157,6 +160,8 @@ var
   txtFile : TextFile;
 begin
  // Change Graph Colour
+ // Update the graph colour, for each kind of data and store that colour
+ // in the text file for next time
   if lblMisc.Text = 'Rainfall - Misc.' then
     begin
       // Set the colour for Rainfall Graph
@@ -183,31 +188,6 @@ begin
  Temperature;
 end;
 
-procedure TfraClimateData.chkDiscussClick(Sender: TObject);
-var
-  txtFile : TextFile;
-begin
-  {if chkDiscuss.IsChecked = True then
-    begin
-      OpenAI;
-    end;
-
-  AssignFile(txtFile, 'Discuss.txt');
-  Rewrite(txtFile);
-  if chkDiscuss.IsChecked = False then
-    begin
-      Writeln(txtFile, 'No');
-    end
-  else
-  if chkDiscuss.IsChecked = True then
-    begin
-      Writeln(txtFile, 'Yes');
-    end;
-  CloseFile(txtFile);
-  Cursor := crHourGlass;   }
-
-end;
-
 procedure TfraClimateData.cmbColoursChange(Sender: TObject);
 begin
   btnSave.Enabled := True;
@@ -229,11 +209,16 @@ var
   I, K : Integer;
 begin
   // OpenAI
+  { This procedure will execute code to retrieve an AI generated
+  - climate discussion for the user, using OpenAI's API }
+
+  // Get the values, that the language model will review into a string variable.
   sValues := '';
   for I := 0 to 12 do
     begin
       sValues := sValues + '; ' + strResults.Cells[I, 0];
     end;
+
 
   var OpenAI := TOpenAI.Create(frmMain.fraSettings1.mmKey.Lines.Text);
   var Completions := OpenAI.Completion.Create(
@@ -241,8 +226,11 @@ begin
       begin
         with strResults do
           begin
+            // Temperature prompt - based on Data Unit
             if lblDataUnit.Text = '°C'  then
               begin
+                // Prompt that will be provided to the language model!
+                // Temperature Prompt!
                 Params.Prompt(sValues
                 + ' are temperature values in °C for 2010 through ' +
                 '2022 respectively for ' + frmMain.fraClimate1.lblLocation.Text
@@ -250,34 +238,46 @@ begin
               end
             else
               begin
+                // Prompt that will be provided to the language model!
+                // Rainfall Prompt
                 Params.Prompt(sValues
                 + ' are rainfall values in millimetres for 2010 through ' +
                 '2022 respectively for ' + frmMain.fraClimate1.lblLocation.Text
                 + '. Using the data provided, describe the trend, and the possible future trend.');
               end;
-
+            // Choose the language model
             Params.Model('text-davinci-003');
+            // Choose that max tokens
             Params.MaxTokens(1000);
           end;
       end);
 
+    // Completions as part of the OpenAI API will provide the completed
+    // response generated by the text model.
     try
       for var Choice in Completions.Choices do
         begin
-          Memo1.Lines.Clear;
-          Memo1.Lines.Text := Choice.Text;
-           for K := Memo1.Lines.Count - 1 downto 0 do
+          // Clear the display memo
+          mmTrend.Lines.Clear;
+          // Choice Text is the outputted response from the model
+          mmTrend.Lines.Text := Choice.Text;
+          // The model, however, leave many lines open. so lets delete these
+          // silly lines!
+           for K := mmTrend.Lines.Count - 1 downto 0 do
             begin
-              if Memo1.Lines[K] = '' then
+              if mmTrend.Lines[K] = '' then
                 begin
-                  Memo1.Lines.Delete(K);
+                  mmTrend.Lines.Delete(K);
                 end;
             end;
           Break;
         end;
     finally
+      // Free the completions
       Completions.Free;
     end;
+    { THIS CODE WAS ACCESSED FROM A DELPHICON VIDEO by Marco Geuze
+      - this video can be accessed via https://www.youtube.com/watch?v=hnBKfrBHUIE }
 end;
 
 procedure TfraClimateData.Rainfall;
@@ -294,11 +294,15 @@ procedure TfraClimateData.Rainfall;
   sColour : string;
 begin
   // UPDATE RAINFALL
+  { This procedure will update all components relating to rainfall data
+  for a specific location! }
 
   // Graph Settings/Misc. Info
   lblMisc.Text := 'Rainfall - Misc.';
 
   // Default Colour: $FF53E888 // GRAPH COLOUR
+  // Set the graph colour according to the users saved settings.
+  // User modified graph colour information is stored in a text file
   AssignFile(txtFile, 'Rainfall_Graph_Colour.txt');
   Reset(txtFile);
   while not Eof(txtFile) do
@@ -306,6 +310,7 @@ begin
       Readln(txtFile, sColour);
     end;
   CloseFile(txtFile);
+  // Update the colour of the graph
   srsRainfall.Color := StrToInt64(sColour);
   cmbColours.Color := StrToInt64(sColour);
 
@@ -322,7 +327,10 @@ begin
         begin
           if tblPlaces['Place_Name'] = frmMain.fraClimate1.lblLocation.Text then
             begin
+              // Get Place ID and store in sID
               sID := tblPlaces['Place_ID'];
+              // Get the climate ID and store it in sClim
+              // Note: The climate ID is also the Koppen Code
               sClim := tblPlaces['Climate_ID'];
             end;
           tblPlaces.Next;
@@ -331,10 +339,11 @@ begin
       // Clear the graph of existing data before plotting
       srsRainfall.Clear;
 
-      // Find the correct location and plot the correct temperature values
+      // Find the correct location and plot the correct rainfall values
       tblRainfall.First;
       while not tblRainfall.Eof do
         begin
+          // Plot rainfall data for the chosen location
           if tblRainfall['Place_ID'] = sID then
             begin
                with srsRainfall do
@@ -355,7 +364,7 @@ begin
                   AddXY(2022, tblRainfall['2022']);
                 end;
             end;
-            tblRainfall.Next;
+          tblRainfall.Next;
         end;
 
         // Add Climate Data for the Specific Location Selected.
@@ -364,10 +373,12 @@ begin
           begin
             if tblClimates['Climate_ID'] = sClim then
               begin
+                // This will add all the climate information specific to a certain
+                // city. The user will see this at the top of the form
                 lblClimateCode.Text := Copy(sClim, 1, 1) + LowerCase(Copy(sClim, 2, 2));
-                lblClimateCode.FontColor := StrToInt64(tblClimates['Colour']);
+               // lblClimateCode.FontColor := StrToInt64(tblClimates['Colour']);
                 lblClimateName.Text := tblClimates['Koppen_Name'];
-                lblClimateName.FontColor := StrToInt64(tblClimates['Colour']);
+               // lblClimateName.FontColor := StrToInt64(tblClimates['Colour']);
                 mmClimateDescrip.Lines.Clear;
                 mmClimateDescrip.Lines.Add(tblClimates['Long_Description']);
                 lblTypeRainfall.Text := 'Rainfall Type: ' + tblClimates['Rainfall_Type'];
@@ -382,11 +393,12 @@ begin
         { The Line of Best Fit Graph shows the trend of climatic data, like
         temperature or rainfall}
 
-        // Clear Existing Line of Best Fest
+        // Clear Existing Line of Best Fit
         srsTempTrend.Clear;
         M := 0;
         B := 0;
         // Use 2014 and 2018 X; Y values
+        { This Line of Best Fit - Trend line can be significantly improved? }
         M := (srsRainfall.YValue[8] - srsRainfall.YValue[4]) / (2018 - 2014);
         B := -((M) * 2018) + (srsRainfall.YValue[8]);
 
@@ -396,6 +408,7 @@ begin
 
 
         // AGGREGATE FIGURES
+        // Calculate and show the aggregate figures in the string grid
          with strAggs do
           begin
             // Maximum Temperature
@@ -423,52 +436,70 @@ begin
                 Cells[0, 3] := '10-year Increase:';
               end;
 
-              // RECORD HIGH/LOW TEMP
-              tblRainfall.First;
-              while not tblRainfall.Eof do
-                begin
-                  if tblRainfall['Place_ID'] = sID then
-                    begin
-                      Cells[0, 4] := 'Record High:';
-                      Cells[1, 4] := FloatToStr(Ceil(tblRainfall['Record_High'])) + ' mm - ' +
-                          IntToStr(YearOf(tblRainfall['Record_High_Year']));
+            // RECORD HIGH/LOW TEMP
+            tblRainfall.First;
+            while not tblRainfall.Eof do
+              begin
+                if tblRainfall['Place_ID'] = sID then
+                  begin
+                    // Add record high and low information that is stored in
+                    // the database to the string grid!
+                    Cells[0, 4] := 'Record High:';
+                    Cells[1, 4] := FloatToStr(Ceil(tblRainfall['Record_High'])) + ' mm - ' +
+                        IntToStr(YearOf(tblRainfall['Record_High_Year']));
 
-                     Cells[0, 5] := 'Record Low: ';
-                     Cells[1, 5] := FloatToStr(Ceil(tblRainfall['Record_Low'])) + ' mm - ' +
-                        IntToStr(YearOf(tblRainfall['Record_Low_Year']));
+                   Cells[0, 5] := 'Record Low: ';
+                   Cells[1, 5] := FloatToStr(Ceil(tblRainfall['Record_Low'])) + ' mm - ' +
+                      IntToStr(YearOf(tblRainfall['Record_Low_Year']));
 
-                    end;
-                  tblRainfall.Next;
-                end;
+                  end;
+                tblRainfall.Next;
+              end;
           end;
 
-          // DATABASE RECORDS
-          lblDataUnit.Text := 'mm';
-          tblRainfall.First;
-          while not tblRainfall.Eof do
+      // DATABASE RECORDS
+      { Show the specific data values as seen in the database
+      show them to the user }
+      lblDataUnit.Text := 'mm';
+      tblRainfall.First;
+      while not tblRainfall.Eof do
+        begin
+          if tblRainfall['Place_ID'] = sID then
             begin
-              if tblRainfall['Place_ID'] = sID then
-                begin
-                  with strResults do
-                      begin
-                      // Add Temperature Values from 2010 to 2022 for specific location
-                      Cells[0, 0] := tblRainfall['2010'];
-                      Cells[1, 0] := tblRainfall['2011'];
-                      Cells[2, 0] := tblRainfall['2012'];
-                      Cells[3, 0] := tblRainfall['2013'];
-                      Cells[4, 0] := tblRainfall['2014'];
-                      Cells[5, 0] := tblRainfall['2015'];
-                      Cells[6, 0] := tblRainfall['2016'];
-                      Cells[7, 0] := tblRainfall['2017'];
-                      Cells[8, 0] := tblRainfall['2018'];
-                      Cells[9, 0] := tblRainfall['2019'];
-                      Cells[10, 0] := tblRainfall['2020'];
-                      Cells[11, 0] := tblRainfall['2021'];
-                      Cells[12, 0] := tblRainfall['2022'];
-                    end;
+              with strResults do
+                  begin
+                  // Add Temperature Values from 2010 to 2022 for specific location
+                  Cells[0, 0] := tblRainfall['2010'];
+                  Cells[1, 0] := tblRainfall['2011'];
+                  Cells[2, 0] := tblRainfall['2012'];
+                  Cells[3, 0] := tblRainfall['2013'];
+                  Cells[4, 0] := tblRainfall['2014'];
+                  Cells[5, 0] := tblRainfall['2015'];
+                  Cells[6, 0] := tblRainfall['2016'];
+                  Cells[7, 0] := tblRainfall['2017'];
+                  Cells[8, 0] := tblRainfall['2018'];
+                  Cells[9, 0] := tblRainfall['2019'];
+                  Cells[10, 0] := tblRainfall['2020'];
+                  Cells[11, 0] := tblRainfall['2021'];
+                  Cells[12, 0] := tblRainfall['2022'];
                 end;
-              tblRainfall.Next;
             end;
+          tblRainfall.Next;
+        end;
+    end;
+
+  // Before executing the OpenAI discussion (which is accessed from the
+  // internet) check that there is an internet connection!
+  if InternetGetConnectedState(0, 0) = True then
+    begin
+      // There is an internet connection, so execute OpenAI procedure
+      frmMain.fraClimate1.fraClimateData1.OpenAI;
+      frmMain.fraClimate1.pnlNoInternet.Visible := False;
+    end
+  else
+    begin
+      // Display offline banner
+      frmMain.fraClimate1.pnlNoInternet.Visible := True;
     end;
 end;
 
@@ -489,7 +520,9 @@ begin
   // Graph Settings/Misc. Info
   lblMisc.Text := 'Temperature - Misc.';
 
-  // Default Colour: $FF53E888 // GRAPH COLOUR
+  // Default Colour: $FF53E888 // GRAPH COLOUR //
+  // Get and update the graph colour - as saved by the user from the
+  // text file
   AssignFile(txtFile, 'Temperature_Graph_Colour.txt');
   Reset(txtFile);
   while not Eof(txtFile) do
@@ -497,6 +530,7 @@ begin
       Readln(txtFile, sColour);
     end;
   CloseFile(txtFile);
+  // Update the graph colour
   srsTemp.Color := StrToInt64(sColour);
   cmbColours.Color := StrToInt64(sColour);
 
@@ -513,6 +547,7 @@ begin
         begin
           if tblPlaces['Place_Name'] = frmMain.fraClimate1.lblLocation.Text then
             begin
+              // Get the Place ID and the Climate ID - Same as in Rainfall
               sID := tblPlaces['Place_ID'];
               sClim := tblPlaces['Climate_ID'];
 
@@ -556,11 +591,11 @@ begin
           begin
             if tblClimates['Climate_ID'] = sClim then
               begin
+                // Add climate information for the location
                 lblClimateCode.Text := Copy(sClim, 1, 1) + LowerCase(Copy(sClim, 2, 2));
                 lblClimateName.Text := tblClimates['Koppen_Name'];
                 //rectClim.Fill.Color := TAlphaColor($42c284);
                 //rectClim.Stroke.Color :=  TAlphaColor($42c284);
-
                 mmClimateDescrip.Lines.Clear;
                 mmClimateDescrip.Lines.Add(tblClimates['Long_Description']);
                 lblTypeRainfall.Text := 'Rainfall Type: ' + tblClimates['Rainfall_Type'];
@@ -571,13 +606,11 @@ begin
             tblClimates.Next;
           end;
 
-
-
         // LINE OF BEST FIT
         { The Line of Best Fit Graph shows the trend of climatic data, like
         temperature or rainfall}
 
-        // Clear Existing Line of Best Fest
+        // Clear Existing Line of Best Fit
         srsTempTrend.Clear;
 
         // Use 2014 and 2018 X; Y values
@@ -589,7 +622,7 @@ begin
         srsTempTrend.AddXY(2022, ((M * 2022) + B));
 
         // AGGREGATE FIGURES
-
+        // Add aggregate figures taken from the graph!
         with strAggs do
           begin
             // Maximum Temperature
@@ -605,7 +638,8 @@ begin
             Cells[1, 2] := FloatToStr(Ceil(srsTemp.YValues.Total / 12)) + ' °C' ;
 
             // Percentage Increase/Decrease in temperature over 10 years.
-            Cells[1, 3] := FloatToStr(Ceil((srsTemp.YValue[0] / srsTemp.YValue[10]) * 100)) + '%';
+            Cells[1, 3] := FloatToStr(Ceil((srsTemp.YValue[0] / srsTemp.YValue[10]) * 100))
+            + '%';
             if Copy(Cells[1, 3], 1, 1) = '-' then
               begin
                 // If the percentage is negative, there is a decrease.
@@ -621,6 +655,8 @@ begin
             tblTemperature.First;
             while not tblTemperature.Eof do
               begin
+                // Get the record/high low from the database and show it to the
+                // user!
                 if tblTemperature['Place_ID'] = sID then
                   begin
                     Cells[0, 4] := 'Record High:';
@@ -636,35 +672,49 @@ begin
               end;
 
 
-              // DATABASE RECORDS
-              lblDataUnit.Text := '°C';
-              tblTemperature.First;
-              while not tblTemperature.Eof do
-                begin
-                  if tblTemperature['Place_ID'] = sID then
-                    begin
-                      with strResults do
-                          begin
-                          // Add Temperature Values from 2010 to 2022 for specific location
-                          Cells[0, 0] := tblTemperature['2010'];
-                          Cells[1, 0] := tblTemperature['2011'];
-                          Cells[2, 0] := tblTemperature['2012'];
-                          Cells[3, 0] := tblTemperature['2013'];
-                          Cells[4, 0] := tblTemperature['2014'];
-                          Cells[5, 0] := tblTemperature['2015'];
-                          Cells[6, 0] := tblTemperature['2016'];
-                          Cells[7, 0] := tblTemperature['2017'];
-                          Cells[8, 0] := tblTemperature['2018'];
-                          Cells[9, 0] := tblTemperature['2019'];
-                          Cells[10, 0] := tblTemperature['2020'];
-                          Cells[11, 0] := tblTemperature['2021'];
-                          Cells[12, 0] := tblTemperature['2022'];
-                        end;
-                    end;
-                  tblTemperature.Next;
-                end;
+            // DATABASE RECORDS
+            lblDataUnit.Text := '°C';
+            tblTemperature.First;
+            // Show the individual records of data for temperature to the
+            // user. Display these values in the string grid.
+            while not tblTemperature.Eof do
+              begin
+                if tblTemperature['Place_ID'] = sID then
+                  begin
+                    with strResults do
+                        begin
+                        // Add Temperature Values from 2010 to 2022 for specific location
+                        Cells[0, 0] := tblTemperature['2010'];
+                        Cells[1, 0] := tblTemperature['2011'];
+                        Cells[2, 0] := tblTemperature['2012'];
+                        Cells[3, 0] := tblTemperature['2013'];
+                        Cells[4, 0] := tblTemperature['2014'];
+                        Cells[5, 0] := tblTemperature['2015'];
+                        Cells[6, 0] := tblTemperature['2016'];
+                        Cells[7, 0] := tblTemperature['2017'];
+                        Cells[8, 0] := tblTemperature['2018'];
+                        Cells[9, 0] := tblTemperature['2019'];
+                        Cells[10, 0] := tblTemperature['2020'];
+                        Cells[11, 0] := tblTemperature['2021'];
+                        Cells[12, 0] := tblTemperature['2022'];
+                      end;
+                  end;
+                tblTemperature.Next;
+              end;
 
-              OpenAI
+            // Before executing the OpenAI discussion (which is accessed from the
+            // internet) check that there is an internet connection!
+            if InternetGetConnectedState(0, 0) = True then
+              begin
+                // There is an internet connection, so execute OpenAI procedure
+                frmMain.fraClimate1.fraClimateData1.OpenAI;
+                frmMain.fraClimate1.pnlNoInternet.Visible := False;
+              end
+            else
+              begin
+                // Display offline banner
+                frmMain.fraClimate1.pnlNoInternet.Visible := True;
+              end;
           end;
     end;
 end;

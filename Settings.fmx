@@ -216,12 +216,28 @@ object fraSettings: TfraSettings
       TextSettings.Font.Family = 'Cascadia Code'
       Position.X = 23.000000000000000000
       Position.Y = 53.000000000000000000
-      Size.Width = 802.000000000000000000
+      Size.Width = 562.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
-      Viewport.Width = 798.000000000000000000
+      Viewport.Width = 558.000000000000000000
       Viewport.Height = 40.000000000000000000
     end
+  end
+  object btnOpen: TButton
+    StyledSettings = [Family]
+    Images = frmMain.ImageList1
+    ImageIndex = 18
+    Position.X = 636.000000000000000000
+    Position.Y = 491.000000000000000000
+    Size.Width = 221.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Text = 'Get OpenAI API Key'
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.StyleExt = {04060000000000000004000000}
+    TextSettings.FontColor = claDodgerblue
+    OnClick = btnOpenClick
   end
 end

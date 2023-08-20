@@ -57,12 +57,11 @@ type
     pnlBacking: TPanel;
     pnlBacking1: TRectangle;
     ShadowEffect1: TShadowEffect;
-    CalloutPanel1: TCalloutPanel;
     Label1: TLabel;
     Label2: TLabel;
     FloatAnimation1: TFloatAnimation;
     ShadowEffect2: TShadowEffect;
-    GlowEffect1: TGlowEffect;
+    CalloutPanel1: TCalloutRectangle;
     procedure btnSettingsClick(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure MultiView1Click(Sender: TObject);
@@ -76,6 +75,7 @@ type
     procedure btnAdminClick(Sender: TObject);
     procedure btnClimateReductionClick(Sender: TObject);
     procedure btnApplyClick(Sender: TObject);
+    procedure fraDataAccess1tmrDateTimeTimer(Sender: TObject);
 
   private
     { Private declarations }
@@ -85,12 +85,12 @@ type
     tStatus, tUpdated: TTime;
     sDiscuss : string;
     sKey : string;
+    sLink : string;
 
     // Procedures
     procedure UpdateWeather;
     procedure OpenLink;
     procedure UpdateNews;
-    procedure GitLink;
   end;
 
 var
@@ -133,6 +133,8 @@ begin
 
   // No Login Button Bug Fix
   frmMain.fraDataAccess1.btnLogin.Visible := True;
+
+  ShadowEffect1.Enabled := True;
 end;
 
 procedure TfrmMain.btnApplyClick(Sender: TObject);
@@ -165,66 +167,78 @@ begin
 end;
 
 procedure TfrmMain.btnClimateAnalysisClick(Sender: TObject);
-var
-  txtFile : TextFile;
 begin
-  // CLIMATE ANALYSIS
+  // CLIMATE ANALYSIS BUTTON CLICK
+  { Show the climate analysis screen }
+  // Ensure that the database is connected before trying to add data
   if fraSettings1.lblConStat.Text = 'Connection Failed' then
-  begin
-    frmError.Visible := True;
-    pnlBacking1.Visible := True;
-    frmError.lblErrorMessage.Text :=
+    begin
+      // Do not show the climate analysis screen as database is disconnected
+      frmError.Visible := True;
+      pnlBacking1.Visible := True;
+      frmError.lblErrorMessage.Text :=
       'A Connection to the Database cannot be Established. Connection Failed';
-  end
-  else if fraSettings1.lblConStat.Text = 'Disconnected' then
-  begin
-    frmError.Visible := True;
-    pnlBacking1.Visible := True;
-    frmError.lblErrorMessage.Text :=
-      'Database Disconnected. Reconnect in Settings.';
-  end
+    end
   else
-  begin
-    // Hide Other Elements
-    scrlbxSettings.Visible := False;
-    scrbxWeather.Visible := False;
-    btnUpdate.Visible := False;
-    lblUpdateStatus.Visible := False;
-    scrlbxAbout.Visible := False;
-    btnApply.Visible := False;
-    btnRestart.Visible := False;
-    scrbxDataMan.Visible := False;
-    scrbxLogin.Visible := False;
-    scrbxAction.Visible := False;
+  if fraSettings1.lblConStat.Text = 'Disconnected' then
+    begin
+      // Do not show the climate analysis screen as database is disconnected
+      frmError.Visible := True;
+      pnlBacking1.Visible := True;
+      frmError.lblErrorMessage.Text :=
+        'Database Disconnected. Reconnect in Settings.';
+    end
+  else
+    begin
+      // Hide Other Elements
+      scrlbxSettings.Visible := False;
+      scrbxWeather.Visible := False;
+      btnUpdate.Visible := False;
+      lblUpdateStatus.Visible := False;
+      scrlbxAbout.Visible := False;
+      btnApply.Visible := False;
+      btnRestart.Visible := False;
+      scrbxDataMan.Visible := False;
+      scrbxLogin.Visible := False;
+      scrbxAction.Visible := False;
 
-    // Show Other Elements
-    scrlbxClimate.Visible := True;
-    lblHeadingMain.Text := '    Climate Analysis';
+      // Show Other Elements
+      scrlbxClimate.Visible := True;
+      // Update Header
+      lblHeadingMain.Text := '    Climate Analysis';
 
-    // Hide Menu
-    MultiView1.HideMaster;
+      // Hide Menu
+      MultiView1.HideMaster;
 
-    // Climate Information
-    // dmData_Code.DatabaseSetup;
-    frmMain.fraClimate1.fraClimateData1.dsTemperature.DataSet :=
-    dmData_Code.tblTemperature;
-    frmMain.fraClimate1.fraClimateData1.Rainfall;
+      // Climate Information
+      // dmData_Code.DatabaseSetup;
+      frmMain.fraClimate1.fraClimateData1.dsTemperature.DataSet :=
+      dmData_Code.tblTemperature;
 
-      AssignFile(txtFile, 'Discuss.txt');
-      Reset(txtFile);
-      while not Eof(txtFile) do
+      // Execute the rainfall procedure
+      frmMain.fraClimate1.fraClimateData1.Rainfall;
+
+      // Before executing the OpenAI discussion (which is accessed from the
+      // internet) check that there is an internet connection!
+      if InternetGetConnectedState(0, 0) = True then
         begin
-          Readln(txtFile, sDiscuss);
+          // There is an internet connection, so execute OpenAI procedure
+          frmMain.fraClimate1.fraClimateData1.OpenAI;
+          frmMain.fraClimate1.pnlNoInternet.Visible := False;
+        end
+      else
+        begin
+          // Display offline banner
+          frmMain.fraClimate1.pnlNoInternet.Visible := True;
         end;
-      CloseFile(txtFile);
+    end;
 
-    
-  end;
 end;
 
 procedure TfrmMain.btnClimateReductionClick(Sender: TObject);
 begin
-  // Climate Action Click
+  // CLIMATE ACTION CLICK
+  { Show the climate action frame }
   // Hide Other Elements
   scrlbxSettings.Visible := False;
   scrlbxClimate.Visible := False;
@@ -246,43 +260,44 @@ begin
 
   // Update News From Database
   UpdateNews;
-
 end;
 
 procedure TfrmMain.btnRestartClick(Sender: TObject);
-var
-  iMessage: Integer;
 begin
   // RESTART APPLICATION
-  // Use ShellExecute
-  // ShellExecute(HWND_DESKTOP, nil, PChar('PAT2023.exe'), nil, nil, SW_SHOWNORMAL);
-  // Application.Terminate;
-  // fraSettings1.pnlCover.Visible := True;
+  { Open the Restart Confirmation form }
   pnlBacking1.Visible := True;
   frmRestart.Show;
 end;
 
 procedure TfrmMain.btnUpdateClick(Sender: TObject);
 begin
-  // UPDATE ONCLICK
-  // Update Weather
+  // Update Button Click
+  { This button will update the weather if there is an internet connection
+  to the computer. }
 
+  // Check that there is an internet connection before updating weather
   if InternetGetConnectedState(0, 0) = False then
-  begin
-    fraWeather1.pnlNoInternet.Visible := True;
-  end
+    begin
+      // If no internet is connected, show that there is no internet
+      // by displaying a red panel that says "Offline"
+      fraWeather1.pnlNoInternet.Visible := True;
+    end
   else
-  begin
-    tLastUpdated.Enabled := True;
-    UpdateWeather;
-    fraWeather1.pnlNoInternet.Visible := False;
-  end;
-
+    begin
+      // If there is an internet connection, hide Offline panel and
+      // call UpdateWeather procedure
+      tLastUpdated.Enabled := True;
+      // Update Weather
+      UpdateWeather;
+      fraWeather1.pnlNoInternet.Visible := False;
+    end;
 end;
 
 procedure TfrmMain.btnWeatherClick(Sender: TObject); // WEATHER CLICK
 begin
   // WEATHER CLICK
+  { Show the weather frame }
   // Hide Other Elements
   scrlbxSettings.Visible := False;
   scrlbxClimate.Visible := False;
@@ -296,6 +311,7 @@ begin
   // Show Other Elements
   scrbxWeather.Visible := True;
   btnUpdate.Visible := True;
+  // Update the header
   lblHeadingMain.Text := '    Weather Forcast';
   lblUpdateStatus.Visible := True;
 
@@ -303,23 +319,24 @@ begin
   MultiView1.HideMaster;
 end;
 
-procedure TfrmMain.GitLink;
+procedure TfrmMain.fraDataAccess1tmrDateTimeTimer(Sender: TObject);
 begin
-  // Open Github Project Page Link
-  ShellExecute(HWND_DESKTOP, 'open',
-  'https://github.com/connor-bell-za/PAT-2023' ,nil,nil, SW_SHOWNORMAL) ;
+  fraDataAccess1.tmrDateTimeTimer(Sender);
 end;
 
 procedure TfrmMain.MultiView1Click(Sender: TObject);
 begin
+  // Hide the multiview drawer when an item is clicked
   MultiView1.HideMaster;
 end;
 
 procedure TfrmMain.OpenLink;
 begin
-  // Open Link for Climate Action
-  ShellExecute(HWND_DESKTOP, 'open',
-  'https://footprint.wwf.org.uk/' ,nil,nil, SW_SHOWNORMAL) ;
+  // OPEN LINK PROCEDURE
+  { This procedure will make use of ShellAPI's ShellExecute function
+   and a global variable sLink to open various links or documents
+   throughout the application }
+  ShellExecute(HWND_DESKTOP, 'open', PChar(sLink) ,nil,nil, SW_SHOWNORMAL);
 end;
 
 procedure TfrmMain.btnSettingsClick(Sender: TObject);
@@ -399,6 +416,7 @@ begin
   // Show Live Weather Frame
   scrbxWeather.Visible := True;
 end;
+
 
 procedure TfrmMain.btnAboutClick(Sender: TObject); // ABOUT CLICK
 begin

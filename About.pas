@@ -39,7 +39,10 @@ uses Main;
 
 procedure TfraAbout.btnLinkClick(Sender: TObject);
 begin
-  frmMain.GitLink;
+  // Open the Github site for the application using the OpenLink procedure
+  // in frmMain.
+  frmMain.sLink := 'https://github.com/connor-bell-za/PAT-2023/';
+  frmMain.OpenLink;
 end;
 
 end.

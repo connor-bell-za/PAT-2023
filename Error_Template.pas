@@ -34,8 +34,12 @@ uses Main, Data_Management, Login, Data_Capture;
 
 procedure TfrmError.btnCancelClick(Sender: TObject);
 begin
+  // Reset the Form and Close
   frmMain.pnlBacking1.Visible := False;
   frmDataCapture.pnlBacking1.Visible := False;
+  Rectangle1.Fill.Color := TAlphaColors.Red;
+  Rectangle1.Stroke.Color := TAlphaColors.Red;
+  lblErrorHeading.Text := 'Error';
   frmError.Close;
 end;
 

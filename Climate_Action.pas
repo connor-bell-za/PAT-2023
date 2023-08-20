@@ -56,6 +56,8 @@ type
     lblHeading4: TLabel;
     lblHeading5: TLabel;
     lblHeading1: TLabel;
+    Line1: TLine;
+    Line2: TLine;
     procedure btnCalculateGoClick(Sender: TObject);
   private
     { Private declarations }
@@ -70,11 +72,10 @@ implementation
 uses Main;
 
 procedure TfraAction.btnCalculateGoClick(Sender: TObject);
-var
-  sLink : string;
 begin
   // Calculate Carbon Footprint
   {Use ShellExecute to Open WWF Website in Browser}
+  frmMain.sLink :=  'https://footprint.wwf.org.uk/';
   frmMain.OpenLink;
   { Shell Execute did not work in this frame, therefore a procedure called
     OpenLink was created in the MAIN FORM which allows the use of
