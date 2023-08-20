@@ -1,15 +1,15 @@
 object fraDataMan: TfraDataMan
   Size.Width = 928.000000000000000000
-  Size.Height = 812.000000000000000000
+  Size.Height = 2622.000000000000000000
   Size.PlatformDefault = False
   object pnlSQL: TPanel
     Anchors = [akLeft, akTop, akRight]
     Position.X = 31.000000000000000000
-    Position.Y = 92.000000000000000000
+    Position.Y = 95.000000000000000000
     Size.Width = 857.000000000000000000
     Size.Height = 532.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 3
+    TabOrder = 4
     object lblHeading: TLabel
       StyledSettings = [Family, Style, FontColor]
       Position.X = 23.000000000000000000
@@ -47,6 +47,7 @@ object fraDataMan: TfraDataMan
       StyledSettings = [Style, FontColor]
       TextSettings.Font.Family = 'Cascadia Code'
       TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.WordWrap = True
       Position.X = 23.000000000000000000
       Position.Y = 45.000000000000000000
       Size.Width = 786.000000000000000000
@@ -57,6 +58,7 @@ object fraDataMan: TfraDataMan
       Viewport.Height = 104.000000000000000000
     end
     object btnExecute: TButton
+      Hint = 'Execute SQL query'
       Position.X = 729.000000000000000000
       Position.Y = 161.000000000000000000
       Size.Width = 80.000000000000000000
@@ -64,10 +66,13 @@ object fraDataMan: TfraDataMan
       Size.PlatformDefault = False
       TabOrder = 5
       Text = 'Execute'
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btnExecuteClick
     end
     object btnExport: TButton
       Cursor = crHourGlass
+      Hint = 'Export SQL query results to Excel Workbook'
       Position.X = 729.000000000000000000
       Position.Y = 476.000000000000000000
       Size.Width = 80.000000000000000000
@@ -75,6 +80,8 @@ object fraDataMan: TfraDataMan
       Size.PlatformDefault = False
       TabOrder = 4
       Text = 'Export'
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btnExportClick
     end
     object tblClimates: TStringGrid
@@ -99,7 +106,7 @@ object fraDataMan: TfraDataMan
     Size.Width = 842.000000000000000000
     Size.Height = 116.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 2
+    TabOrder = 3
     object lblCapture: TLabel
       StyledSettings = [Family, Style, FontColor]
       Position.X = 23.000000000000000000
@@ -112,6 +119,7 @@ object fraDataMan: TfraDataMan
       TabOrder = 1
     end
     object btnOpen: TButton
+      Hint = 'Open Data Capture Form'
       Position.X = 23.000000000000000000
       Position.Y = 45.000000000000000000
       Size.Width = 130.000000000000000000
@@ -119,6 +127,8 @@ object fraDataMan: TfraDataMan
       Size.PlatformDefault = False
       TabOrder = 2
       Text = 'Open Form'
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btnOpenClick
     end
     object Label3: TLabel
@@ -145,89 +155,501 @@ object fraDataMan: TfraDataMan
       TabOrder = 3
     end
   end
-  object Label1: TLabel
-    StyledSettings = [Family, Style]
-    Position.X = 32.000000000000000000
-    Position.Y = 6.000000000000000000
-    Size.Width = 152.000000000000000000
-    Size.Height = 27.000000000000000000
+  object pnlHelp: TPanel
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 31.000000000000000000
+    Position.Y = 781.000000000000000000
+    Size.Width = 842.000000000000000000
+    Size.Height = 1820.000000000000000000
     Size.PlatformDefault = False
-    TextSettings.Font.Size = 20.000000000000000000
-    TextSettings.FontColor = xFF007FDF
-    Text = 'Quick Actions'
-    TabOrder = 1
-  end
-  object pnlQA: TCalloutRectangle
-    Fill.Color = claBlack
-    Position.X = 240.000000000000000000
-    Position.Y = 15.000000000000000000
-    Size.Width = 600.000000000000000000
-    Size.Height = 63.000000000000000000
-    Size.PlatformDefault = False
-    Stroke.Color = xFF0068B9
-    Stroke.Thickness = 3.000000000000000000
-    CalloutWidth = 23.000000000000000000
-    CalloutLength = 11.000000000000000000
-    CalloutPosition = Left
-    object btnCount: TButton
-      Position.X = 309.000000000000000000
-      Position.Y = 11.000000000000000000
-      Size.Width = 87.000000000000000000
-      Size.Height = 41.000000000000000000
+    TabOrder = 2
+    object Label2: TLabel
+      StyledSettings = [Family, Style]
+      Position.X = 23.000000000000000000
+      Position.Y = 14.000000000000000000
+      Size.Width = 210.000000000000000000
+      Size.Height = 27.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 10
-      Text = 'Count'
-      OnClick = btnCountClick
+      TextSettings.Font.Size = 20.000000000000000000
+      TextSettings.FontColor = xFF3571DC
+      Text = 'Help'
+      TabOrder = 1
     end
-    object btnTotal: TButton
-      Position.X = 404.000000000000000000
-      Position.Y = 11.000000000000000000
-      Size.Width = 87.000000000000000000
-      Size.Height = 41.000000000000000000
+    object Label5: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 23.000000000000000000
+      Position.Y = 78.000000000000000000
+      Size.Width = 418.000000000000000000
+      Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      Text = 'View information about SQL'
+      TabOrder = 18
+    end
+    object Label6: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 23.000000000000000000
+      Position.Y = 37.000000000000000000
+      Size.Width = 677.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      Text = 
+        'View help about SQL statements as well as information about the ' +
+        'database.'
+      TabOrder = 15
+    end
+    object Label7: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 23.000000000000000000
+      Position.Y = 101.000000000000000000
+      Size.Width = 677.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      Text = 
+        'Get help with SQL statements  used to manipulate this database b' +
+        'y clicking the button below.'
+      TabOrder = 14
+    end
+    object btnSQLHelp: TButton
+      Cursor = crHandPoint
+      StyledSettings = [Family]
+      Hint = 'Open the SQL reference document'
+      Images = frmMain.ImageList1
+      ImageIndex = 18
+      Position.X = 23.000000000000000000
+      Position.Y = 136.000000000000000000
+      Size.Width = 257.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Get SQL Help'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {04060000000000000004000000}
+      TextSettings.FontColor = claDodgerblue
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnSQLHelpClick
+    end
+    object Label8: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 23.000000000000000000
+      Position.Y = 206.000000000000000000
+      Size.Width = 418.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      Text = 'Database Summary and Information'
+      TabOrder = 17
+    end
+    object mmAboutDB: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      DataDetectorTypes = []
+      DisableMouseWheel = True
+      Lines.Strings = (
+        
+          'This application makes use of a Microsoft Access (.mdb) database' +
+          ' to store information about the climate, news articles and diffe' +
+          'rent places. It also stores rainfall and temperature average val' +
+          'ues for the years 2010 through 2022. '
+        
+          'The connection to the database and i'#39'ts location can be managed ' +
+          'in settings. '
+        ''
+        'The database is used for: '
+        '  '#9679' Storing information about different places. '
+        '  '#9679' Storing information about different climates.'
+        '  '#9679' Storing information about different climate news articles. '
+        '  '#9679' Storing information about record high or low temperature'
+        '      and rainfall values and when they occured.'
+        
+          '  '#9679' Storing the average temperature and rainfall values for diff' +
+          'erent '
+        '      places for the years 2010 through 2022. '
+        ' '
+        'Information stored in this database is used in: '
+        
+          '  '#9679' Showing information about the climate in the climate analysi' +
+          's section '
+        '      of this application. '
+        
+          '  '#9679' Showing a graph and the trend of average rainfall and temper' +
+          'ature '
+        '      values for a certain place. '
+        
+          '  '#9679' Showing these specific rainfall or temperature averages to t' +
+          'he user. '
+        '  '#9679' The calculation of aggregate information. '
+        
+          '  '#9679' Discussing (using the OpenAI AI language model - text-davinc' +
+          'i-003) the '
+        '      climate about a certain place. '
+        '  '#9679' Displaying news articles to the user. '
+        '  '#9679' Showing information about a place. '
+        ''
+        
+          'The database can be manipulated by SQL code only. There is no ab' +
+          'ility '
+        
+          'to edit the database using DBGrids. Information about the tables' +
+          ' and the'
+        
+          'data stored in them will be shown below. Each field will be disc' +
+          'ussed and '
+        
+          'an example of the data will be shown. Please press refresh to up' +
+          'date the '
+        'tables if needed, but this is usually not necessary.   ')
+      ReadOnly = True
+      StyledSettings = [Family, Style, FontColor]
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.WordWrap = True
+      CanFocus = False
+      Cursor = crDefault
+      Position.X = 23.000000000000000000
+      Position.Y = 247.000000000000000000
+      Size.Width = 786.000000000000000000
+      Size.Height = 314.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'memostyle'
+      TabOrder = 19
+      Viewport.Width = 766.000000000000000000
+      Viewport.Height = 310.000000000000000000
+    end
+    object Label9: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 23.000000000000000000
+      Position.Y = 569.000000000000000000
+      Size.Width = 418.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      Text = 'Table Information'
+      TabOrder = 16
+    end
+    object strPlaces: TStringGrid
+      CanFocus = True
+      ClipChildren = True
+      Position.X = 23.000000000000000000
+      Position.Y = 634.000000000000000000
+      Size.Width = 786.000000000000000000
+      Size.Height = 258.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'gridstyle'
+      TabOrder = 8
+      RowCount = 9
+      Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, Header, HeaderClick, AutoDisplacement]
+      Viewport.Width = 782.000000000000000000
+      Viewport.Height = 233.000000000000000000
+      object scField: TStringColumn
+        Header = 'Field Name'
+        ReadOnly = True
+        Size.Width = 150.000000000000000000
+      end
+      object scFieldSize: TStringColumn
+        Header = 'Field Size'
+        ReadOnly = True
+      end
+      object scDataType: TStringColumn
+        Header = 'Data Type'
+        ReadOnly = True
+        Size.Width = 150.000000000000000000
+      end
+      object scDescription: TStringColumn
+        Header = 'Description'
+        ReadOnly = True
+        Size.Width = 379.000000000000000000
+      end
+    end
+    object Label10: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 25.000000000000000000
+      Position.Y = 603.000000000000000000
+      Size.Width = 677.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      Text = 'tblPlaces'
+      TabOrder = 11
+    end
+    object strClimates: TStringGrid
+      CanFocus = True
+      ClipChildren = True
+      Position.X = 23.000000000000000000
+      Position.Y = 934.000000000000000000
+      Size.Width = 786.000000000000000000
+      Size.Height = 258.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'gridstyle'
+      TabOrder = 4
+      RowCount = 9
+      Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, Header, HeaderClick, AutoDisplacement]
+      Viewport.Width = 782.000000000000000000
+      Viewport.Height = 233.000000000000000000
+      object scFieldName1: TStringColumn
+        Header = 'Field Name'
+        ReadOnly = True
+        Size.Width = 150.000000000000000000
+      end
+      object scFieldSize1: TStringColumn
+        Header = 'Field Size'
+        ReadOnly = True
+      end
+      object scDataType1: TStringColumn
+        Header = 'Data Type'
+        ReadOnly = True
+        Size.Width = 150.000000000000000000
+      end
+      object scDescription1: TStringColumn
+        Header = 'Description'
+        ReadOnly = True
+        Size.Width = 379.000000000000000000
+      end
+    end
+    object Label11: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 23.000000000000000000
+      Position.Y = 900.000000000000000000
+      Size.Width = 677.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      Text = 'tblClimates'
       TabOrder = 7
-      Text = 'Total'
-      OnClick = btnExecuteClick
     end
-    object btnAverage: TButton
-      Position.X = 499.000000000000000000
-      Position.Y = 11.000000000000000000
-      Size.Width = 87.000000000000000000
-      Size.Height = 41.000000000000000000
+    object Label12: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 144.000000000000000000
+      Position.Y = 603.000000000000000000
+      Size.Width = 663.000000000000000000
+      Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 6
-      Text = 'Average'
-      OnClick = btnAverageClick
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.HorzAlign = Trailing
+      Text = 'Stores the information about places in South Africa'
+      TabOrder = 13
     end
-    object btnSort: TButton
-      Position.X = 24.000000000000000000
-      Position.Y = 11.000000000000000000
-      Size.Width = 87.000000000000000000
-      Size.Height = 41.000000000000000000
+    object Label13: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 146.000000000000000000
+      Position.Y = 900.000000000000000000
+      Size.Width = 663.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.HorzAlign = Trailing
+      Text = 
+        'Stores the information about different K'#246'ppen Climates featured ' +
+        'throughout South Africa'
+      TabOrder = 12
+    end
+    object Label14: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 23.000000000000000000
+      Position.Y = 1200.000000000000000000
+      Size.Width = 677.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      Text = 'tblNews'
+      TabOrder = 6
+    end
+    object Label15: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 146.000000000000000000
+      Position.Y = 1200.000000000000000000
+      Size.Width = 663.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.HorzAlign = Trailing
+      Text = 
+        'Stores the information about recent climate events featured in v' +
+        'arious news sources'
+      TabOrder = 10
+    end
+    object strNews: TStringGrid
+      CanFocus = True
+      ClipChildren = True
+      Position.X = 23.000000000000000000
+      Position.Y = 1236.000000000000000000
+      Size.Width = 786.000000000000000000
+      Size.Height = 258.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'gridstyle'
+      TabOrder = 3
+      RowCount = 9
+      Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, Header, HeaderClick, AutoDisplacement]
+      Viewport.Width = 782.000000000000000000
+      Viewport.Height = 233.000000000000000000
+      object StringColumn1: TStringColumn
+        Header = 'Field Name'
+        ReadOnly = True
+        Size.Width = 150.000000000000000000
+      end
+      object StringColumn2: TStringColumn
+        Header = 'Field Size'
+        ReadOnly = True
+      end
+      object StringColumn3: TStringColumn
+        Header = 'Data Type'
+        ReadOnly = True
+        Size.Width = 150.000000000000000000
+      end
+      object StringColumn4: TStringColumn
+        Header = 'Description'
+        ReadOnly = True
+        Size.Width = 379.000000000000000000
+      end
+    end
+    object Line4: TLine
+      LineType = Bottom
+      Opacity = 0.600000023841857900
+      Position.X = 14.000000000000000000
+      Position.Y = 538.000000000000000000
+      Size.Width = 817.000000000000000000
+      Size.Height = 31.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = claWhite
+      Stroke.Thickness = 0.500000000000000000
+    end
+    object Line1: TLine
+      LineType = Bottom
+      Opacity = 0.600000023841857900
+      Position.X = 14.000000000000000000
+      Position.Y = 171.000000000000000000
+      Size.Width = 817.000000000000000000
+      Size.Height = 31.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = claWhite
+      Stroke.Thickness = 0.500000000000000000
+    end
+    object Line2: TLine
+      LineType = Bottom
+      Opacity = 0.600000023841857900
+      Position.X = 14.000000000000000000
+      Position.Y = 870.000000000000000000
+      Size.Width = 817.000000000000000000
+      Size.Height = 31.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = claWhite
+      Stroke.Thickness = 0.500000000000000000
+    end
+    object Line3: TLine
+      LineType = Bottom
+      Opacity = 0.600000023841857900
+      Position.X = 14.000000000000000000
+      Position.Y = 1170.000000000000000000
+      Size.Width = 817.000000000000000000
+      Size.Height = 31.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = claWhite
+      Stroke.Thickness = 0.500000000000000000
+    end
+    object Line5: TLine
+      LineType = Bottom
+      Opacity = 0.600000023841857900
+      Position.X = 14.000000000000000000
+      Position.Y = 1473.000000000000000000
+      Size.Width = 817.000000000000000000
+      Size.Height = 31.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = claWhite
+      Stroke.Thickness = 0.500000000000000000
+    end
+    object Label17: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 25.000000000000000000
+      Position.Y = 1504.000000000000000000
+      Size.Width = 677.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      Text = 'tblTemperature and tblRainfall'
+      TabOrder = 5
+    end
+    object Label18: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 146.000000000000000000
+      Position.Y = 1504.000000000000000000
+      Size.Width = 663.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.HorzAlign = Trailing
+      Text = 
+        'Stores temperature and rainfall information for different places' +
+        ' accross South Africa'
+      TabOrder = 9
+    end
+    object strData: TStringGrid
+      CanFocus = True
+      ClipChildren = True
+      Position.X = 23.000000000000000000
+      Position.Y = 1540.000000000000000000
+      Size.Width = 786.000000000000000000
+      Size.Height = 258.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'gridstyle'
+      TabOrder = 2
+      RowCount = 9
+      Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, Header, HeaderClick, AutoDisplacement]
+      Viewport.Width = 782.000000000000000000
+      Viewport.Height = 217.000000000000000000
+      object StringColumn5: TStringColumn
+        Header = 'Field Name'
+        ReadOnly = True
+        Size.Width = 200.000000000000000000
+      end
+      object StringColumn6: TStringColumn
+        Header = 'Field Size'
+        ReadOnly = True
+      end
+      object StringColumn7: TStringColumn
+        Header = 'Data Type'
+        ReadOnly = True
+        Size.Width = 150.000000000000000000
+      end
+      object StringColumn8: TStringColumn
+        Header = 'Description'
+        ReadOnly = True
+        Size.Width = 410.000000000000000000
+      end
+    end
+  end
+  object rectHeader: TRectangle
+    Align = Top
+    Fill.Color = xFF3571DC
+    Size.Width = 928.000000000000000000
+    Size.Height = 85.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = xFF00508C
+    Stroke.Thickness = 0.000000000000000000
+    object ShadowEffect1: TShadowEffect
+      Distance = 3.000000000000000000
+      Direction = 45.000000000000000000
+      Softness = 0.800000011920929000
+      Opacity = 1.000000000000000000
+      ShadowColor = xFF4E4E4E
+    end
+    object btnAddQuery: TButton
+      Enabled = False
+      Position.X = 807.000000000000000000
+      Position.Y = 34.000000000000000000
+      Size.Width = 72.000000000000000000
+      Size.Height = 39.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 5
-      Text = 'Sort'
-      OnClick = btnSortClick
-    end
-    object btnMax: TButton
-      Position.X = 119.000000000000000000
-      Position.Y = 11.000000000000000000
-      Size.Width = 87.000000000000000000
-      Size.Height = 41.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 9
-      Text = 'Maximum'
-      OnClick = btnMaxClick
-    end
-    object btnMin: TButton
-      Position.X = 214.000000000000000000
-      Position.Y = 11.000000000000000000
-      Size.Width = 87.000000000000000000
-      Size.Height = 41.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 8
-      Text = 'Minimum'
-      OnClick = btnMinClick
+      Text = 'Add'
+      OnClick = btnAddQueryClick
     end
   end
   object cmbTable: TComboBox
@@ -241,14 +663,89 @@ object fraDataMan: TfraDataMan
       'tblTemperature')
     ItemIndex = 0
     ItemHeight = 41.000000000000000000
-    Position.X = 32.000000000000000000
-    Position.Y = 38.000000000000000000
+    Position.X = 31.000000000000000000
+    Position.Y = 37.000000000000000000
+    Size.Width = 186.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'comboboxstyle'
+    TabOrder = 25
+    OnChange = cmbTableChange
+  end
+  object cmbParams: TComboBox
+    Enabled = False
+    Hint = 'Climate'
+    Items.Strings = (
+      'Select Query Parameters')
+    ItemIndex = 0
+    ItemHeight = 41.000000000000000000
+    Position.X = 613.000000000000000000
+    Position.Y = 37.000000000000000000
+    Size.Width = 186.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'comboboxstyle'
+    TabOrder = 23
+    OnChange = cmbParamsChange
+  end
+  object cmbKind: TComboBox
+    Enabled = False
+    Hint = 'Climate'
+    Items.Strings = (
+      'Select Query Kind')
+    ItemIndex = 0
+    ItemHeight = 41.000000000000000000
+    Position.X = 419.000000000000000000
+    Position.Y = 37.000000000000000000
     Size.Width = 186.000000000000000000
     Size.Height = 41.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'comboboxstyle'
     TabOrder = 24
-    OnChange = cmbTableChange
+    OnChange = cmbKindChange
+  end
+  object cmbFields: TComboBox
+    Enabled = False
+    Hint = 'Climate'
+    Items.Strings = (
+      'Select Table Field')
+    ItemIndex = 0
+    ItemHeight = 41.000000000000000000
+    Position.X = 225.000000000000000000
+    Position.Y = 37.000000000000000000
+    Size.Width = 186.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'comboboxstyle'
+    TabOrder = 26
+    OnChange = cmbFieldsChange
+  end
+  object Label1: TLabel
+    StyledSettings = [Family, Style]
+    Position.X = 31.000000000000000000
+    Position.Y = 4.000000000000000000
+    Size.Width = 233.000000000000000000
+    Size.Height = 27.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.FontColor = claWhite
+    Text = 'Quick Database Actions'
+    TabOrder = 1
+  end
+  object Label16: TLabel
+    StyledSettings = [Family]
+    Position.X = 202.000000000000000000
+    Position.Y = 2.000000000000000000
+    Size.Width = 677.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.FontColor = claWhite
+    TextSettings.HorzAlign = Trailing
+    Text = 
+      'Quickly and easily execute pre-implemented SQL database queries ' +
+      'here'
+    TabOrder = 12
   end
   object dsClimates: TDataSource
     DataSet = dmDatabase.tblClimates

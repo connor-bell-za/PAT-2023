@@ -264,8 +264,8 @@ object frmDataCapture: TfrmDataCapture
           Size.Height = 153.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 23
-          Viewport.Width = 589.000000000000000000
-          Viewport.Height = 153.000000000000000000
+          Viewport.Width = 585.000000000000000000
+          Viewport.Height = 149.000000000000000000
         end
         object Label19: TLabel
           StyledSettings = [Family, FontColor]
@@ -402,7 +402,7 @@ object frmDataCapture: TfrmDataCapture
           TextSettings.Font.Size = 16.000000000000000000
           Position.X = 23.000000000000000000
           Position.Y = 162.000000000000000000
-          Size.Width = 906.000000000000000000
+          Size.Width = 646.000000000000000000
           Size.Height = 41.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = 'Enter Article Headline'
@@ -516,8 +516,8 @@ object frmDataCapture: TfrmDataCapture
           Size.Height = 153.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 20
-          Viewport.Width = 906.000000000000000000
-          Viewport.Height = 153.000000000000000000
+          Viewport.Width = 902.000000000000000000
+          Viewport.Height = 149.000000000000000000
         end
         object Label12: TLabel
           StyledSettings = [Family, FontColor]
@@ -552,6 +552,17 @@ object frmDataCapture: TfrmDataCapture
           TextSettings.Font.Size = 14.000000000000000000
           Text = 'Image Name (Include Extension)'
           TabOrder = 6
+        end
+        object chkEvent: TCheckBox
+          StyledSettings = [Family, Style, FontColor]
+          Position.X = 710.000000000000000000
+          Position.Y = 171.000000000000000000
+          Size.Width = 219.000000000000000000
+          Size.Height = 19.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 21
+          Text = 'Major Event?'
+          TextSettings.Font.Size = 16.000000000000000000
         end
       end
     end
@@ -635,7 +646,12 @@ object frmDataCapture: TfrmDataCapture
         object cmbClimateGroup: TComboBox
           Hint = 'Climate'
           Items.Strings = (
-            'Select Climate Group')
+            'Select Climate Group'
+            'Tropical'
+            'Arid'
+            'Temperate'
+            'Cold (Continental)'
+            'Polar')
           ItemIndex = 0
           ItemHeight = 41.000000000000000000
           Position.X = 664.000000000000000000
@@ -666,8 +682,8 @@ object frmDataCapture: TfrmDataCapture
           Size.Height = 122.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 27
-          Viewport.Width = 589.000000000000000000
-          Viewport.Height = 122.000000000000000000
+          Viewport.Width = 585.000000000000000000
+          Viewport.Height = 118.000000000000000000
         end
         object Label29: TLabel
           StyledSettings = [Family, FontColor]
@@ -707,7 +723,13 @@ object frmDataCapture: TfrmDataCapture
         object cmbHeatLevel: TComboBox
           Hint = 'Climate'
           Items.Strings = (
-            'Select Heat Level')
+            'Select Heat Level'
+            'Hot '
+            'Cold'
+            'Hot Summer '
+            'Cold Summer'
+            'Warm Summer'
+            'Very cold Winter')
           ItemIndex = 0
           ItemHeight = 41.000000000000000000
           Position.X = 664.000000000000000000
@@ -732,7 +754,18 @@ object frmDataCapture: TfrmDataCapture
         object cmbRainfallType: TComboBox
           Hint = 'Climate'
           Items.Strings = (
-            'Select Rainfall Type')
+            'Select Rainfall Type'
+            'Rainforest'
+            'Monsoon'
+            'Savanna, Dry'
+            'Savanna, Wet'
+            'Steppe'
+            'Desert'
+            'Without dry season'
+            'Dry Summer'
+            'Dry Winter'
+            'Ice Cap'
+            'Tundra')
           ItemIndex = 0
           ItemHeight = 41.000000000000000000
           Position.X = 664.000000000000000000
@@ -768,7 +801,9 @@ object frmDataCapture: TfrmDataCapture
         object cmbRainfallSeason: TComboBox
           Hint = 'Climate'
           Items.Strings = (
-            'Select Rainfall Season')
+            'Select Rainfall Season'
+            'Summer '#11
+            'Winter')
           ItemIndex = 0
           ItemHeight = 41.000000000000000000
           Position.X = 664.000000000000000000
@@ -820,10 +855,10 @@ object frmDataCapture: TfrmDataCapture
       Text = 'tblTemperature'
       ExplicitSize.cx = 133.000000000000000000
       ExplicitSize.cy = 32.000000000000000000
-      object TPanel
+      object pnlTemp: TPanel
         Align = Top
         Size.Width = 980.000000000000000000
-        Size.Height = 441.000000000000000000
+        Size.Height = 465.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
         object Label32: TLabel
@@ -864,7 +899,7 @@ object frmDataCapture: TfrmDataCapture
         object cmbPlaceTemp: TComboBox
           Hint = 'Climate'
           Items.Strings = (
-            'Select Climate Group')
+            'Select Place Name')
           ItemIndex = 0
           ItemHeight = 41.000000000000000000
           Position.X = 23.000000000000000000
@@ -873,7 +908,8 @@ object frmDataCapture: TfrmDataCapture
           Size.Height = 41.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'comboboxstyle'
-          TabOrder = 19
+          TabOrder = 17
+          OnChange = cmbPlaceTempChange
         end
         object Label37: TLabel
           StyledSettings = [Family, FontColor]
@@ -884,75 +920,28 @@ object frmDataCapture: TfrmDataCapture
           Size.PlatformDefault = False
           TextSettings.Font.Size = 14.000000000000000000
           Text = 'Place'
-          TabOrder = 11
+          TabOrder = 9
         end
         object Label35: TLabel
           StyledSettings = [Family, FontColor]
-          Position.X = 287.000000000000000000
-          Position.Y = 75.000000000000000000
+          Position.X = 271.000000000000000000
+          Position.Y = 70.000000000000000000
           Size.Width = 210.000000000000000000
           Size.Height = 24.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 14.000000000000000000
           Text = 'Annual Data'
-          TabOrder = 10
-        end
-        object nbTempAvg: TNumberBox
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          TabOrder = 20
-          Cursor = crIBeam
-          ValueType = Float
-          KeyboardType = NumbersAndPunctuation
-          TextSettings.Font.Size = 16.000000000000000000
-          Position.X = 427.000000000000000000
-          Position.Y = 367.000000000000000000
-          Size.Width = 100.000000000000000000
-          Size.Height = 41.000000000000000000
-          Size.PlatformDefault = False
-          StyledSettings = [Family, Style, FontColor]
-        end
-        object Label38: TLabel
-          StyledSettings = [Family, FontColor]
-          Position.X = 427.000000000000000000
-          Position.Y = 341.000000000000000000
-          Size.Width = 210.000000000000000000
-          Size.Height = 24.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 14.000000000000000000
-          Text = 'Average'
-          TabOrder = 9
-        end
-        object Label39: TLabel
-          StyledSettings = [Family, FontColor]
-          Position.X = 535.000000000000000000
-          Position.Y = 373.000000000000000000
-          Size.Width = 26.000000000000000000
-          Size.Height = 24.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 16.000000000000000000
-          Text = #186'C'
           TabOrder = 8
         end
-        object btnAddTemp: TButton
-          StyledSettings = [Family, FontColor]
-          Position.X = 602.000000000000000000
-          Position.Y = 367.000000000000000000
-          Size.Width = 80.000000000000000000
-          Size.Height = 41.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 21
-          Text = 'Add'
-          TextSettings.Font.Size = 16.000000000000000000
-          TextSettings.Font.StyleExt = {00060000000000000004000000}
-        end
-        object GroupBox1: TGroupBox
+        object gbxRecordsTemp: TGroupBox
+          Enabled = False
           Position.X = 23.000000000000000000
           Position.Y = 151.000000000000000000
           Size.Width = 219.000000000000000000
           Size.Height = 258.000000000000000000
           Size.PlatformDefault = False
           Text = 'Records'
-          TabOrder = 22
+          TabOrder = 18
           object nbTempHigh: TNumberBox
             Touch.InteractiveGestures = [LongTap, DoubleTap]
             TabOrder = 28
@@ -993,6 +982,7 @@ object frmDataCapture: TfrmDataCapture
             Touch.InteractiveGestures = [LongTap, DoubleTap]
             TabOrder = 27
             Cursor = crIBeam
+            Min = -100.000000000000000000
             ValueType = Float
             KeyboardType = NumbersAndPunctuation
             TextSettings.Font.Size = 16.000000000000000000
@@ -1044,6 +1034,39 @@ object frmDataCapture: TfrmDataCapture
             TabOrder = 19
           end
         end
+        object strTempData: TStringGrid
+          CanFocus = True
+          Enabled = False
+          Position.X = 271.000000000000000000
+          Position.Y = 102.000000000000000000
+          Size.Width = 650.000000000000000000
+          Size.Height = 307.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 19
+          RowCount = 12
+          Viewport.Width = 646.000000000000000000
+          Viewport.Height = 282.000000000000000000
+          object StringColumn1: TStringColumn
+            Header = 'Year'
+            ReadOnly = True
+          end
+          object StringColumn2: TStringColumn
+            Header = 'Temperature Average ('#176'C)'
+            Size.Width = 200.000000000000000000
+          end
+        end
+        object btnReset: TButton
+          Enabled = False
+          Images = frmMain.ImageList1
+          Position.X = 828.000000000000000000
+          Position.Y = 417.000000000000000000
+          Size.Width = 93.000000000000000000
+          Size.Height = 39.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          Text = 'Reset Sheet'
+          OnClick = btnResetClick
+        end
       end
     end
     object tblRainfall: TTabItem
@@ -1062,6 +1085,221 @@ object frmDataCapture: TfrmDataCapture
       Text = 'tblRainfall'
       ExplicitSize.cx = 95.000000000000000000
       ExplicitSize.cy = 32.000000000000000000
+      object Panel2: TPanel
+        Align = Top
+        Size.Width = 980.000000000000000000
+        Size.Height = 465.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object Label36: TLabel
+          StyledSettings = [Family, Style, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 27.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 20.000000000000000000
+          Text = 'Add Rainfall Data'
+          TabOrder = 1
+        end
+        object Label38: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 45.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00060000000000000004000000}
+          TabOrder = 3
+        end
+        object Label39: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 29.000000000000000000
+          Size.Width = 602.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 
+            'Add annual rainfall averages into the tblRainfall table of the D' +
+            'atabase'
+          TabOrder = 2
+        end
+        object cmbPlaceRain: TComboBox
+          Hint = 'Climate'
+          Items.Strings = (
+            'Select Place Name')
+          ItemIndex = 0
+          ItemHeight = 41.000000000000000000
+          Position.X = 23.000000000000000000
+          Position.Y = 102.000000000000000000
+          Size.Width = 219.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'comboboxstyle'
+          TabOrder = 17
+          OnChange = cmbPlaceRainChange
+        end
+        object Label44: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 23.000000000000000000
+          Position.Y = 75.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Place'
+          TabOrder = 9
+        end
+        object Label45: TLabel
+          StyledSettings = [Family, FontColor]
+          Position.X = 271.000000000000000000
+          Position.Y = 70.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          Text = 'Annual Data'
+          TabOrder = 8
+        end
+        object gbxRecordRain: TGroupBox
+          Enabled = False
+          Position.X = 23.000000000000000000
+          Position.Y = 151.000000000000000000
+          Size.Width = 219.000000000000000000
+          Size.Height = 258.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Records'
+          TabOrder = 18
+          object nbRainMost: TNumberBox
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            TabOrder = 28
+            Cursor = crIBeam
+            Max = 100000.000000000000000000
+            ValueType = Float
+            KeyboardType = NumbersAndPunctuation
+            TextSettings.Font.Size = 16.000000000000000000
+            Position.X = 20.000000000000000000
+            Position.Y = 41.000000000000000000
+            Size.Width = 100.000000000000000000
+            Size.Height = 41.000000000000000000
+            Size.PlatformDefault = False
+            StyledSettings = [Family, Style, FontColor]
+          end
+          object Label46: TLabel
+            StyledSettings = [Family, FontColor]
+            Position.X = 20.000000000000000000
+            Position.Y = 15.000000000000000000
+            Size.Width = 210.000000000000000000
+            Size.Height = 24.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 14.000000000000000000
+            Text = 'Record Most'
+            TabOrder = 11
+          end
+          object Label47: TLabel
+            StyledSettings = [Family, FontColor]
+            Position.X = 128.000000000000000000
+            Position.Y = 50.000000000000000000
+            Size.Width = 73.000000000000000000
+            Size.Height = 24.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 16.000000000000000000
+            Text = 'mm    in'
+            TabOrder = 10
+          end
+          object nbRainLeast: TNumberBox
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            TabOrder = 27
+            Cursor = crIBeam
+            Max = 10000.000000000000000000
+            ValueType = Float
+            KeyboardType = NumbersAndPunctuation
+            TextSettings.Font.Size = 16.000000000000000000
+            Position.X = 20.000000000000000000
+            Position.Y = 158.000000000000000000
+            Size.Width = 100.000000000000000000
+            Size.Height = 41.000000000000000000
+            Size.PlatformDefault = False
+            StyledSettings = [Family, Style, FontColor]
+          end
+          object Label48: TLabel
+            StyledSettings = [Family, FontColor]
+            Position.X = 128.000000000000000000
+            Position.Y = 160.000000000000000000
+            Size.Width = 83.000000000000000000
+            Size.Height = 24.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 16.000000000000000000
+            Text = 'mm    in'
+            TabOrder = 8
+          end
+          object Label49: TLabel
+            StyledSettings = [Family, FontColor]
+            Position.X = 20.000000000000000000
+            Position.Y = 132.000000000000000000
+            Size.Width = 210.000000000000000000
+            Size.Height = 24.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 14.000000000000000000
+            Text = 'Record Least'
+            TabOrder = 9
+          end
+          object dpRainMost: TDateEdit
+            Date = 45132.000000000000000000
+            Position.X = 20.000000000000000000
+            Position.Y = 90.000000000000000000
+            Size.Width = 164.000000000000000000
+            Size.Height = 41.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 20
+          end
+          object dpRainLeast: TDateEdit
+            Date = 45132.000000000000000000
+            Position.X = 20.000000000000000000
+            Position.Y = 207.000000000000000000
+            Size.Width = 164.000000000000000000
+            Size.Height = 41.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 19
+          end
+        end
+        object strRainData: TStringGrid
+          CanFocus = True
+          ClipChildren = True
+          Enabled = False
+          Position.X = 271.000000000000000000
+          Position.Y = 102.000000000000000000
+          Size.Width = 650.000000000000000000
+          Size.Height = 307.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 19
+          RowCount = 12
+          Viewport.Width = 646.000000000000000000
+          Viewport.Height = 282.000000000000000000
+          object StringColumn3: TStringColumn
+            Header = 'Year'
+            ReadOnly = True
+          end
+          object StringColumn4: TStringColumn
+            Header = 'Rainfall Average (mm)'
+            Size.Width = 200.000000000000000000
+          end
+        end
+        object btnResetRainSheet: TButton
+          Enabled = False
+          Images = frmMain.ImageList1
+          Position.X = 828.000000000000000000
+          Position.Y = 417.000000000000000000
+          Size.Width = 93.000000000000000000
+          Size.Height = 39.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          Text = 'Reset Sheet'
+          OnClick = btnResetRainSheetClick
+        end
+      end
     end
   end
   object pnlBacking1: TRectangle

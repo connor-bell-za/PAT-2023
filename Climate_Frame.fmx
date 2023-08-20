@@ -6,7 +6,7 @@ object fraClimate: TfraClimate
     Anchors = [akLeft, akTop, akRight]
     Position.X = 19.000000000000000000
     Position.Y = 63.000000000000000000
-    Size.Width = 887.000000000000000000
+    Size.Width = 888.000000000000000000
     Size.Height = 41.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'listboxstyle'
@@ -17,7 +17,7 @@ object fraClimate: TfraClimate
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
     ListStyle = Horizontal
-    Viewport.Width = 883.000000000000000000
+    Viewport.Width = 884.000000000000000000
     Viewport.Height = 37.000000000000000000
     object ListBoxItem1: TListBoxItem
       TextSettings.Font.Size = 18.000000000000000000
@@ -89,8 +89,8 @@ object fraClimate: TfraClimate
       inherited mmClimateDescrip: TMemo
         StyledSettings = [Style, FontColor]
         TextSettings.Font.Size = 16.000000000000000000
-        Viewport.Width = 832.000000000000000000
-        Viewport.Height = 143.000000000000000000
+        Viewport.Width = 828.000000000000000000
+        Viewport.Height = 139.000000000000000000
       end
       inherited Panel1: TPanel
         inherited lblSeasonRainfall: TLabel
@@ -116,7 +116,7 @@ object fraClimate: TfraClimate
       end
       inherited strAggs: TStringGrid
         Viewport.Width = 248.000000000000000000
-        Viewport.Height = 241.000000000000000000
+        Viewport.Height = 239.000000000000000000
         inherited StringColumn1: TStringColumn
           Size.Width = 128.000000000000000000
         end
@@ -133,7 +133,7 @@ object fraClimate: TfraClimate
       inherited Label4: TLabel
         TextSettings.Font.StyleExt = {00060000000000000004000000}
       end
-      inherited Memo1: TMemo
+      inherited mmTrend: TMemo
         Viewport.Width = 513.000000000000000000
         Viewport.Height = 239.000000000000000000
       end
@@ -183,6 +183,33 @@ object fraClimate: TfraClimate
       inherited lblMisc: TLabel
         TextSettings.Font.StyleExt = {00060000000000000004000000}
       end
+      inherited gbxPrinting: TGroupBox
+        inherited cmbPrint: TComboBox
+          TabOrder = 38
+        end
+        inherited btnPrint: TButton
+          TabOrder = 39
+        end
+      end
+      inherited gbxExport: TGroupBox
+        inherited cmbExport: TComboBox
+          TabOrder = 38
+        end
+        inherited btnExport: TButton
+          TabOrder = 39
+        end
+      end
+      inherited gbxGraph: TGroupBox
+        inherited btnSave: TButton
+          TabOrder = 38
+        end
+        inherited cmbColours: TComboColorBox
+          TabOrder = 39
+        end
+        inherited btnDefault: TButton
+          TabOrder = 40
+        end
+      end
       inherited lblClimateCode: TLabel
         StyledSettings = [FontColor]
         Position.X = 32.000000000000000000
@@ -205,6 +232,7 @@ object fraClimate: TfraClimate
         MultiResBitmap.Width = 1820
       end
       inherited Panel3: TPanel
+        TabOrder = 25
         inherited lblPopulation: TLabel
           TabOrder = 1
         end
@@ -265,6 +293,27 @@ object fraClimate: TfraClimate
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 87
+    end
+  end
+  object pnlNoInternet: TRectangle
+    Align = Bottom
+    Fill.Color = xFFF30011
+    Position.Y = 528.000000000000000000
+    Size.Width = 928.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = claNull
+    Visible = False
+    object lblNoInternet: TLabel
+      StyledSettings = [FontColor]
+      Position.X = 30.000000000000000000
+      Position.Y = 12.000000000000000000
+      Size.Width = 393.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 20.000000000000000000
+      Text = 'Offline'
+      TabOrder = 0
     end
   end
 end

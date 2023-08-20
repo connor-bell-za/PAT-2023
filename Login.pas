@@ -22,9 +22,12 @@ type
     lblDate: TLabel;
     lblTime: TLabel;
     tmrDateTime: TTimer;
+    effGlow: TGlowEffect;
     procedure btnLoginClick(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure tmrDateTimeTimer(Sender: TObject);
+    procedure btnLoginMouseEnter(Sender: TObject);
+    procedure btnLoginMouseLeave(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,6 +47,18 @@ begin
   // Login Click
   frmMain.scrbxDataMan.Visible := True;
   frmMain.scrbxLogin.Visible := False;
+end;
+
+procedure TfraDataAccess.btnLoginMouseEnter(Sender: TObject);
+begin
+  // Glow Effect
+  effGlow.Enabled := True;
+end;
+
+procedure TfraDataAccess.btnLoginMouseLeave(Sender: TObject);
+begin
+  // Glow Effect
+  effGlow.Enabled := False;
 end;
 
 procedure TfraDataAccess.Image1Click(Sender: TObject);
@@ -104,14 +119,8 @@ begin
                         edtPassword.Text := '';
                         edtID.Text := '';
 
-                        // Log Activity
-                        AssignFile(txtFile, 'Log.txt');
-                        Append(txtFile);
-                        Writeln(txtFile, '[' + DateToStr(Now) + ' ' +
-                        TimeToStr(Now) + ']' + ' Emplid: ' + sEmplid + ' '
-                        + ' LOGIN');
-                        CloseFile(txtFile);
-
+                        // Update Database Information for Help
+                        fraDataMan1.dbInfo;
                       end;
                   end
                 else
