@@ -258,6 +258,7 @@ object frmDataCapture: TfrmDataCapture
         object mmDescriptionPlace: TMemo
           Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
           DataDetectorTypes = []
+          TextSettings.WordWrap = True
           Position.X = 23.000000000000000000
           Position.Y = 272.000000000000000000
           Size.Width = 589.000000000000000000
@@ -510,6 +511,7 @@ object frmDataCapture: TfrmDataCapture
         object mmArticle: TMemo
           Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
           DataDetectorTypes = []
+          TextSettings.WordWrap = True
           Position.X = 23.000000000000000000
           Position.Y = 333.000000000000000000
           Size.Width = 906.000000000000000000
@@ -676,6 +678,7 @@ object frmDataCapture: TfrmDataCapture
         object mmLongDescription: TMemo
           Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
           DataDetectorTypes = []
+          TextSettings.WordWrap = True
           Position.X = 23.000000000000000000
           Position.Y = 279.000000000000000000
           Size.Width = 589.000000000000000000
@@ -1036,6 +1039,7 @@ object frmDataCapture: TfrmDataCapture
         end
         object strTempData: TStringGrid
           CanFocus = True
+          ClipChildren = True
           Enabled = False
           Position.X = 271.000000000000000000
           Position.Y = 102.000000000000000000

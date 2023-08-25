@@ -239,27 +239,48 @@ procedure TfrmMain.btnClimateReductionClick(Sender: TObject);
 begin
   // CLIMATE ACTION CLICK
   { Show the climate action frame }
-  // Hide Other Elements
-  scrlbxSettings.Visible := False;
-  scrlbxClimate.Visible := False;
-  scrlbxAbout.Visible := False;
-  btnApply.Visible := False;
-  btnRestart.Visible := False;
-  scrbxDataMan.Visible := False;
-  scrbxWeather.Visible := False;
-  scrbxLogin.Visible := False;
-  btnUpdate.Visible := False;
-  lblUpdateStatus.Visible := False;
+  // Check that the database is connected before trying to use it
+  if fraSettings1.lblConStat.Text = 'Connection Failed' then
+    begin
+      // Do not show the climate analysis screen as database is disconnected
+      frmError.Visible := True;
+      pnlBacking1.Visible := True;
+      frmError.lblErrorMessage.Text :=
+      'A Connection to the Database cannot be Established. Connection Failed';
+    end
+  else
+  if fraSettings1.lblConStat.Text = 'Disconnected' then
+    begin
+      // Do not show the climate analysis screen as database is disconnected
+      frmError.Visible := True;
+      pnlBacking1.Visible := True;
+      frmError.lblErrorMessage.Text :=
+        'Database Disconnected. Reconnect in Settings.';
+    end
+  else
+    begin
+      // Hide Other Elements
+      scrlbxSettings.Visible := False;
+      scrlbxClimate.Visible := False;
+      scrlbxAbout.Visible := False;
+      btnApply.Visible := False;
+      btnRestart.Visible := False;
+      scrbxDataMan.Visible := False;
+      scrbxWeather.Visible := False;
+      scrbxLogin.Visible := False;
+      btnUpdate.Visible := False;
+      lblUpdateStatus.Visible := False;
 
-  // Show Other Elements
-  scrbxAction.Visible := True;
-  lblHeadingMain.Text := '    Climate Change Action';
+      // Show Other Elements
+      scrbxAction.Visible := True;
+      lblHeadingMain.Text := '    Climate Change Action';
 
-  // Hide Menu
-  MultiView1.HideMaster;
+      // Hide Menu
+      MultiView1.HideMaster;
 
-  // Update News From Database
-  UpdateNews;
+      // Update News From Database
+      UpdateNews;
+    end;
 end;
 
 procedure TfrmMain.btnRestartClick(Sender: TObject);
@@ -489,7 +510,7 @@ begin
   I := 1;
   with dmData_Code do
     begin
-      // Get Dates into Array
+      // Get Dates into Array - this will allow us to sort the dates
       tblNews.First;
       while not (tblNews.Eof) do
         begin
@@ -574,6 +595,9 @@ begin
           mmArticle1.Lines.Clear;
           mmArticle1.Lines.Add(sAfter2);
 
+          // Add Image
+          tblNews.RecNo := 1;
+          img1.MultiResBitmap.Bitmaps[1].LoadFromFile(tblNews['Image_Location']);
           // ******************** ADD 2st ARTICLE ***************************
           // Add Heading
           tblNews.RecNo := 2;
@@ -612,7 +636,9 @@ begin
           sAfter2 := (StringReplace(sAfter1, '</div>', '', [rfReplaceAll, rfIgnoreCase]));
           mmArticle2.Lines.Clear;
           mmArticle2.Lines.Add(sAfter2);
-
+          // Add Image
+          tblNews.RecNo := 2;
+          img2.MultiResBitmap.Bitmaps[1].LoadFromFile(tblNews['Image_Location']);
 
           // ********************* ADD 3rd ARTICLE **************************
           // Add Heading
@@ -652,6 +678,9 @@ begin
           sAfter2 := (StringReplace(sAfter1, '</div>', '', [rfReplaceAll, rfIgnoreCase]));
           mmArticle3.Lines.Clear;
           mmArticle3.Lines.Add(sAfter2);
+          // Add Image
+          tblNews.RecNo := 3;
+          img3.MultiResBitmap.Bitmaps[1].LoadFromFile(tblNews['Image_Location']);
 
           // ******************** ADD 4th ARTICLE ****************************
           // Add Heading
@@ -691,6 +720,8 @@ begin
           sAfter2 := (StringReplace(sAfter1, '</div>', '', [rfReplaceAll, rfIgnoreCase]));
           mmArticle4.Lines.Clear;
           mmArticle4.Lines.Add(sAfter2);
+          tblNews.RecNo := 4;
+          img4.MultiResBitmap.Bitmaps[1].LoadFromFile(tblNews['Image_Location']);
 
           // ********************* Add 5th Article **************************
           // Add Heading
@@ -722,6 +753,10 @@ begin
             begin
               mmArticle5.Lines.Add('Minor Event in ' + sPlace + #13);
             end;
+
+          // Add Image
+          tblNews.RecNo := 5;
+          img5.MultiResBitmap.Bitmaps[1].LoadFromFile(tblNews['Image_Location']);
 
           // Add Body
           mmArticle5.Lines.Add(tblNews['Article_Body']);
@@ -766,7 +801,7 @@ begin
     with fraWeather1 do
     begin
       // WEATHER
-
+      // Add all weather data using REST requests
       // Weather Description
       rqstDescription.Execute;
 
@@ -1028,49 +1063,49 @@ begin
 
       // CHANGE BACKGROUND AND PANEL COLOURS BASED ON WEATHER
       // Added: 15 July 2023
-
+      // Adding icons according to the weather
       sMain := UpperCase(fdmDescription['main']);
       sDescription := UpperCase(sDescription);
       if (sDescription = 'OVERCAST CLOUDS') or (sMain = 'DRIZZLE') or
         (sMain = 'SNOW') then
-      begin
-        imgBackground.Bitmap.LoadFromFile('Overcast.jpg');
-        imgIco.Bitmap.LoadFromFile('Icon-Clouds.png');
-      end
+        begin
+          imgBackground.Bitmap.LoadFromFile('Overcast.jpg');
+          imgIco.Bitmap.LoadFromFile('Icon-Clouds.png');
+        end
       else if sDescription = 'BROKEN CLOUDS' then
-      begin
-        imgBackground.Bitmap.LoadFromFile('Broken Clouds.jpg');
-        imgIco.Bitmap.LoadFromFile('Icon-Cloudy.png');
-      end
+        begin
+          imgBackground.Bitmap.LoadFromFile('Broken Clouds.jpg');
+          imgIco.Bitmap.LoadFromFile('Icon-Cloudy.png');
+        end
       else if sDescription = 'SCATTERED CLOUDS' then
-      begin
-        imgBackground.Bitmap.LoadFromFile('Scattered Clouds.jpg');
-        imgIco.Bitmap.LoadFromFile('Icon-Cloudy.png');
-      end
+        begin
+          imgBackground.Bitmap.LoadFromFile('Scattered Clouds.jpg');
+          imgIco.Bitmap.LoadFromFile('Icon-Cloudy.png');
+        end
       else if sDescription = 'FEW CLOUDS' then
-      begin
-        imgBackground.Bitmap.LoadFromFile('Few Clouds.jpg');
-        imgIco.Bitmap.LoadFromFile('Icon-Cloudy.png');
-      end
+        begin
+          imgBackground.Bitmap.LoadFromFile('Few Clouds.jpg');
+          imgIco.Bitmap.LoadFromFile('Icon-Cloudy.png');
+        end
       else if sMain = 'CLEAR' then
-      begin
-        imgBackground.Bitmap.LoadFromFile('Clear.jpg');
-        imgIco.Bitmap.LoadFromFile('Icon-Sun-Yellow.png');
-      end
+        begin
+          imgBackground.Bitmap.LoadFromFile('Clear.jpg');
+          imgIco.Bitmap.LoadFromFile('Icon-Sun-Yellow.png');
+        end
       else if sMain = 'RAIN' then
-      begin
-        imgBackground.Bitmap.LoadFromFile('Rain.jpg');
-        imgIco.Bitmap.LoadFromFile('Icon-Rain.png');
-      end
+        begin
+          imgBackground.Bitmap.LoadFromFile('Rain.jpg');
+          imgIco.Bitmap.LoadFromFile('Icon-Rain.png');
+        end
       else if sMain = 'THUNDERSTORM' then
-      begin
-        imgBackground.Bitmap.LoadFromFile('Thunderstorm.jpg');
-        imgIco.Bitmap.LoadFromFile('Icon-Thunderstorm.png');
-      end
+        begin
+          imgBackground.Bitmap.LoadFromFile('Thunderstorm.jpg');
+          imgIco.Bitmap.LoadFromFile('Icon-Thunderstorm.png');
+        end
       else
-      begin
-        imgBackground.Bitmap.LoadFromFile('Johannesburg_Dark.jpg');
-      end;
+        begin
+          imgBackground.Bitmap.LoadFromFile('Johannesburg_Dark.jpg');
+        end;
     end;
   end;
 end;
