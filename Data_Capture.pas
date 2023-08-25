@@ -1007,6 +1007,10 @@ begin
   // Add Data to combo boxes
   with dmData_Code do
     begin
+      // Add Climates to Climate Box
+      cmbClimate.Clear;
+      cmbClimate.Items.Add('Select Climate Name');
+      cmbClimate.ItemIndex := 0;
       tblClimates.First;
       while not tblClimates.Eof do
         begin
@@ -1014,6 +1018,10 @@ begin
           tblClimates.Next;
         end;
 
+        // Add Places to Places Box
+      cmbPlace.Clear;
+      cmbPlace.Items.Add('Select Place Name');
+      cmbPlace.ItemIndex := 0;
       tblPlaces.First;
       while not tblPlaces.Eof do
         begin
@@ -1021,6 +1029,7 @@ begin
           tblPlaces.Next;
         end;
 
+        // Add Places to Places Box
       cmbPlaceTemp.Clear;
       cmbPlaceTemp.Items.Add('Select Place Name');
       cmbPlaceTemp.ItemIndex := 0;
@@ -1031,6 +1040,7 @@ begin
           tblPlaces.Next;
         end;
 
+        // Add Places to Places Box
       cmbPlaceRain.Clear;
       cmbPlaceRain.Items.Add('Select Place Name');
       cmbPlaceRain.ItemIndex := 0;

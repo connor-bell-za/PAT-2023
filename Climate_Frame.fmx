@@ -183,33 +183,6 @@ object fraClimate: TfraClimate
       inherited lblMisc: TLabel
         TextSettings.Font.StyleExt = {00060000000000000004000000}
       end
-      inherited gbxPrinting: TGroupBox
-        inherited cmbPrint: TComboBox
-          TabOrder = 38
-        end
-        inherited btnPrint: TButton
-          TabOrder = 39
-        end
-      end
-      inherited gbxExport: TGroupBox
-        inherited cmbExport: TComboBox
-          TabOrder = 38
-        end
-        inherited btnExport: TButton
-          TabOrder = 39
-        end
-      end
-      inherited gbxGraph: TGroupBox
-        inherited btnSave: TButton
-          TabOrder = 38
-        end
-        inherited cmbColours: TComboColorBox
-          TabOrder = 39
-        end
-        inherited btnDefault: TButton
-          TabOrder = 40
-        end
-      end
       inherited lblClimateCode: TLabel
         StyledSettings = [FontColor]
         Position.X = 32.000000000000000000
